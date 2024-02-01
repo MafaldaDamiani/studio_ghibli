@@ -1,14 +1,19 @@
 package it.corso.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -46,6 +51,15 @@ public class Prodotto {
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name="fk_id_film",referencedColumnName = "id" )
 	private Film film; 
+	
+	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinTable
+	(
+			name = "ordini_prodotti",
+			joinColumns = @JoinColumn(name = "fk_id_prodotto", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name= "fk_id_ordine", referencedColumnName = "id")
+	)
+	private List<Ordine> ordini = new ArrayList<>(); 
 	
 	public Film getFilm() {
 		return film;
