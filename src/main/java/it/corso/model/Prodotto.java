@@ -47,6 +47,12 @@ public class Prodotto {
 	@JoinColumn(name="fk_id_film",referencedColumnName = "id" )
 	private Film film; 
 	
+	public Film getFilm() {
+		return film;
+	}
+	public void setFilm(Film film) {
+		this.film = film;
+	}
 	public int getId() {
 		return id;
 	}
