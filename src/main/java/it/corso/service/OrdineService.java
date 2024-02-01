@@ -8,6 +8,6 @@ import it.corso.model.Ordine;
 public interface OrdineService {
 	void aggiungiOrdine();
 	void rimuoviOrdine();
-	List<Ordine> getordini();
+	List<Ordine> getOrdini();
 	Ordine getOrdineById(int id); 
 }
