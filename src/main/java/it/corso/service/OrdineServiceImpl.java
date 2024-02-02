@@ -1,4 +1,4 @@
-package it.corso.service;
+/*package it.corso.service;
 
 import java.util.List;
 
@@ -30,4 +30,4 @@ public class OrdineServiceImpl implements OrdineService {
 		return ordineDao.findById(id).get();
 	}
 
-}
+}*/

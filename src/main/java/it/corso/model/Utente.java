@@ -29,7 +29,7 @@ public class Utente {
 	@Column(name="cognome")
 	private String cognome;
 	
-	@Pattern(regexp = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", message="Formato data non corretto!")
+	/*@Pattern(regexp = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", message="Formato data non corretto!")*/
 	@Column(name="dataDiNascita")
 	private LocalDate dataDiNascita;
 	
@@ -45,7 +45,7 @@ public class Utente {
 	@Column(name="citta")
 	private String citta;
 	
-	@Pattern(regexp = "[a-zA-Z'.\\s]{5,100}", message= "Caratteri non ammessi nel campo indirizzo!")
+	@Pattern(regexp = "[a-zA-Z0-9'.\\s]{5,100}", message= "Caratteri non ammessi nel campo indirizzo!")
 	@Column(name="indirizzo")
 	private String indirizzo;
 	
@@ -58,13 +58,14 @@ public class Utente {
 	private String cap;
 	
 	@Pattern(regexp = "[a-zA-Z0-9._-]{2,15}", message= "Caratteri non ammessi nel campo username!")
-	@Column(name="nomeUtente")
-	private String nomeUtente;
+	@Column(name="username")
+	private String username;
 	
-	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\\\d)(?=.*[@$!%*?&])[A-Za-z\\\\d@$!%*?&]{8,}$", message= "La password non rispetta le seguenti caratteristiche: deve avere almeno 8 caratteri, almeno una lettera maiuscola, una lettera minuscola, un numero e un carattere speciale tra @$!%*?&.")
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[&.?!_-])[a-zA-Z\\d&.?!_-]{8,15}$", message= "La password non rispetta le seguenti caratteristiche: deve avere almeno 8 caratteri, almeno una lettera maiuscola, una lettera minuscola, un numero e un carattere speciale tra &.?!_-")
 	@Column(name="password")
 	private String password;
 	
+	//?=.*
 	@OneToMany
 	(
 		mappedBy = "utente",
@@ -136,11 +137,11 @@ public class Utente {
 	public void setCap(String cap) {
 		this.cap = cap;
 	}
-	public String getNomeUtente() {
-		return nomeUtente;
+	public String getUsername() {
+		return username;
 	}
-	public void setNomeUtente(String nomeUtente) {
-		this.nomeUtente = nomeUtente;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;

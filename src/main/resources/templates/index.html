@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<title>Baglioni è un grande artista.</title>
+		<title>Registrazione Utente</title>
 	</head>
 	<body>
-		<h1>Mafalda mente!!!</h1>
+		<form method="post" th:object="${utente}">
+			<input type="text" th:field="*{nome}" placeholder="Inserire nome">
+			<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+			<br>
+			<input type="text" th:field="*{cognome}" placeholder="Inserire cognome">
+			<p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></p>
+			<br>
+			<input type="date" th:field="*{dataDiNascita}" placeholder="Inserire data di nascita">
+			<p th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></p>
+			<br>
+			<input type="text" th:field="*{email}" placeholder="Inserire indirizzo email">
+			<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+			<br>
+			<input type="text" th:field="*{numeroDiTelefono}" placeholder="Inserire numero di telefono">
+			<p th:if="${#fields.hasErrors('numeroDiTelefono')}" th:errors="*{numeroDiTelefono}"></p>
+			<br>
+			<input type="text" th:field="*{citta}" placeholder="Inserire città">
+			<p th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}"></p>
+			<br>
+			<input type="text" th:field="*{indirizzo}" placeholder="Inserire indirizzo">
+			<p th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}"></p>
+			<br>
+			<input type="text" th:field="*{provincia}" placeholder="Inserire provincia">
+			<p th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}"></p>
+			<br>
+			<input type="text" th:field="*{cap}" placeholder="Inserire cap">
+			<p th:if="${#fields.hasErrors('cap')}" th:errors="*{cap}"></p>
+			<br>
+			<input type="text" th:field="*{username}" placeholder="Inserire username">
+			<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+			<br>
+			<input type="password" th:field="*{password}" placeholder="Inserire password">
+			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+			<br>
+			<input type="submit" value="Registra Utente">
+		</form>
 	</body>
 </html>
