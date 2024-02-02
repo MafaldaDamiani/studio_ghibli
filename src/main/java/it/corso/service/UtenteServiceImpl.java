@@ -51,7 +51,7 @@ public class UtenteServiceImpl implements UtenteService {
 	@Override
 	public boolean controlloLogin(String username, String password, HttpSession session) {
 		
-		ArrayList<Utente> utenti= (ArrayList<Utente>) getUtenti(); 
+		List<Utente> utenti= getUtenti(); 
 		
 		for(Utente utente : utenti) {
 			if(username.equals(utente.getUsername()) && password.equals(utente.getPassword())) {
