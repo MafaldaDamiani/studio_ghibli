@@ -58,6 +58,7 @@ public class Prodotto {
 			inverseJoinColumns = @JoinColumn(name= "fk_id_ordine", referencedColumnName = "id")
 	)
 	private List<Ordine> ordini = new ArrayList<>(); 
+	//Potrebbe non servire
 	
 	public Film getFilm() {
 		return film;
