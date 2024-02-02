@@ -11,10 +11,10 @@ import it.corso.model.Utente;
 import it.corso.service.UtenteService;
 import jakarta.validation.Valid;
 
-// localhost:8080
+// localhost:8080/registrazione
 @Controller
-@RequestMapping("/")
-public class IndexController
+@RequestMapping("/registrazione")
+public class RegistrazioneController
 {
 	@Autowired
 	private UtenteService utenteService;
@@ -24,7 +24,7 @@ public class IndexController
 	{
 		Utente utente = new Utente();
 		model.addAttribute("utente", utente);
-		return "index";
+		return "registrazione";
 	}
 	
 	@PostMapping
@@ -33,8 +33,8 @@ public class IndexController
 			BindingResult result)
 	{
 		if(result.hasErrors())
-			return "index";
+			return "registrazione";
 		utenteService.registraUtente(utente);
-		return "redirect:/";
+		return "redirect:/registrazione";
 	}
 }
