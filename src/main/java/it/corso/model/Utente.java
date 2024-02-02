@@ -3,6 +3,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,7 +31,7 @@ public class Utente {
 	@Column(name="cognome")
 	private String cognome;
 	
-	/*@Pattern(regexp = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", message="Formato data non corretto!")*/
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="dataDiNascita")
 	private LocalDate dataDiNascita;
 	
