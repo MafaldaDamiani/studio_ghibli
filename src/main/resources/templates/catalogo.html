@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+		<head>
+		<meta charset="UTF-8">
+		<title>Catalogo prodotti</title>
+		<link rel="stylesheet" href="css/style.css">
+		</head>
+	<body>
+        <div class="nav">
+        	<a th:href=@{/}>HOME</a>
+        	<a th:href="@{/catalogo(tipologia='Film')}">FILM</a>
+        	<a th:href="@{/catalogo(tipologia='Merchandising')}">MERCHANDISING</a>
+        </div>
+        <!-- Questo menu con filtri apparirà solo ed esclusivamente nella sezione merchandising. -->
+        <div th:if="${tipologiaTesto} == MERCHANDISING" class="filters">
+            <div class="dropdown">
+                <button class="dropdown-btn">ORDINA</button>
+                <div class="dropdown-contenuto">
+                  <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Ordina', nome='Crescente')}">Prezzo crescente</a>
+                  <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Ordina', nome='Decrescente')}">Prezzo decrescente</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">FILM</button>
+                <div class="dropdown-contenuto">
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Film', nome='1')}">Nausicaä della valle del vento</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Film', nome='2')}">Il mio vicino Totoro</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Film', nome='3')}">Kiki consegne a domicilio</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Film', nome='4')}">Porco Rosso</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Film', nome='5')}">La principessa Mononoke</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Film', nome='6')}">La città incantata</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Film', nome='7')}">Il castello errante di Howl</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Film', nome='8')}">Ponyo sulla socgliera</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Film', nome='9')}">Si alza il vento</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Film', nome='10')}">Il ragazzo e l'airone</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">CATEGORIA</button>
+                <div class="dropdown-contenuto">
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Categoria', nome='Abbigliamento')}">Abbigliamento</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Categoria', nome='Accessori')}">Accessori</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Categoria', nome='Decorazioni per la casa')}">Decorazioni per la casa</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Categoria', nome='Modellini da collezione')}">Modellini da collezione</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Categoria', nome='Peluches ed Action Figures')}">Peluches ed Action Figures</a>
+                    <a th:href="@{/catalogo(tipologia='Merchandising', filtro='Categoria', nome='Poster')}">Poster</a>
+                </div>
+            </div>
+        </div>
+        <!-- Questo menu con filtri apparirà solo ed esclusivamente nella sezione film. -->
+        <div th:if="${tipologiaTesto} == FILM" class="filters">
+            <div class="dropdown">
+                <button class="dropdown-btn">ORDINA</button>
+                <div class="dropdown-contenuto">
+                  <a th:href="@{/catalogo(tipologia='Film', filtro='Ordina', nome='Crescente')}">Prezzo crescente</a>
+                  <a th:href="@{/catalogo(tipologia='Film', filtro='Ordina', nome='Decrescente')}">Prezzo decrescente</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">CATEGORIA</button>
+                <div class="dropdown-contenuto">
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Categoria', nome='Blu-Ray')}">Blu-Ray</a>
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Categoria', nome='DVD')}">DVD</a>
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Categoria', nome='Formato digitale')}">Formato digitale</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">GENERE</button>
+                <div class="dropdown-contenuto">
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Genere', nome='Avventura')}">Avventura</a>
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Genere', nome='Azione')}">Azione</a>
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Genere', nome='Biografico')}">Biografico</a>
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Genere', nome='Commedia')}">Commedia</a>
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Genere', nome='Drammatico')}">Drammatico</a>
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Genere', nome='Fantasy')}">Fantasy</a>
+                </div>
+            </div>      
+            <div class="dropdown">
+                <button class="dropdown-btn">RATING</button>
+                <div class="dropdown-contenuto">
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Rating', nome='TUTTI')}">TUTTI</a>
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Rating', nome='VM14')}">VM14</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">NOLEGGIO</button>
+                <div class="dropdown-contenuto">
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Noleggio', nome='Si')}">Si</a>
+                    <a th:href="@{/catalogo(tipologia='Film', filtro='Noleggio', nome='No')}">No</a>
+                </div>
+            </div>
+          </div>
+        <div class="main">
+            <div class="tipologia-prodotto"><a th:href="@{/catalogo(tipologia=${tipologiaLink})}"><h1 th:text=${tipologiaTesto}></h1></a></div>
+            <div class="cards-prodotti">
+                <div th:each="prodotto : ${catalogo}" class="card-prodotto">
+                    <img th:src=${prodotto.immagine} alt="Immagine Prodotto">
+                    <div class="nome"><h2 th:text=${prodotto.nome} ></h2></div>
+                    <p th:text=${prodotto.categoria} class="categoria"></p>
+                    <p th:text="${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}" class="prezzo"></p>
+                    <button class="aggiungi-carrello">AGGIUNGI AL CARRELLO</button>
+                 </div>
+             </div>
+            <div class="altro"><button>GUARDA ALTRO</button></div>
+        </div>
+        <div class="footer"></div>               		
+	</body>
+</html>
