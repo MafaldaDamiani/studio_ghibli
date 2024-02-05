@@ -33,7 +33,7 @@ public class CarrelloController {
 
 	}
 			
-	//localhost:8080/rimuovi
+	
 	@GetMapping ("/rimuovi")
 	public String gestisciRimozione(@RequestParam("id")int idArticolo, HttpSession session) {
 		prodottoService.rimuoviDaCarrello(session, idArticolo);
