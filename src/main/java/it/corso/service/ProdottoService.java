@@ -3,6 +3,7 @@ package it.corso.service;
 import java.util.List;
 
 import it.corso.model.Prodotto;
+import jakarta.servlet.http.HttpSession;
 
 public interface ProdottoService {
 	Prodotto getProdottoById(int id); 
@@ -14,5 +15,7 @@ public interface ProdottoService {
 	List<Prodotto> getProdottiPerPrezzoDecrescente(String tipologiaProdotto);
 	List<Prodotto> getFilmPerRating(String ratingFilm);
 	List<Prodotto> getFilmPerGenere(String genereFilm);
-	List<Prodotto> getFilmPerNoleggio (String noleggioFilm);	
+	List<Prodotto> getFilmPerNoleggio (String noleggioFilm);
+	void aggiungiACarrello(HttpSession session, int id);
+	void rimuoviDaCarrello(HttpSession session, int id); 
 }

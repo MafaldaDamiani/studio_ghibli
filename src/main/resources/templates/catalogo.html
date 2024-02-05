@@ -98,7 +98,7 @@
                     <div class="nome"><h2 th:text=${prodotto.nome} ></h2></div>
                     <p th:text=${prodotto.categoria} class="categoria"></p>
                     <p th:text="${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}" class="prezzo"></p>
-                    <button class="aggiungi-carrello">AGGIUNGI AL CARRELLO</button>
+                    <a th:href="@{catalogo/aggiungi(id=${prodotto.id})}"><button  class="aggiungi-carrello">AGGIUNGI AL CARRELLO</button></a>
                  </div>
              </div>
             <div class="altro"><button>GUARDA ALTRO</button></div>

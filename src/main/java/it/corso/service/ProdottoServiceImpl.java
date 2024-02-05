@@ -1,11 +1,11 @@
 package it.corso.service;
+import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import it.corso.dao.ProdottoDao;
 import it.corso.model.Prodotto;
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class ProdottoServiceImpl implements ProdottoService{
@@ -54,5 +54,32 @@ public class ProdottoServiceImpl implements ProdottoService{
 	@Override
 	public List<Prodotto> getFilmPerNoleggio(String noleggioFilm) {
 		return prodottoDao.getProdottiPerNoleggio(noleggioFilm);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public void aggiungiACarrello(HttpSession session, int id) {
+		List<Prodotto> catalogo= getProdotti(); 
+		
+		List<Prodotto> carrello= session.getAttribute("carrello")==null ? new ArrayList<>(): (List<Prodotto>) session.getAttribute("carrello");
+		
+		for(Prodotto prodotto: catalogo)
+			if(prodotto.getId()==id) {
+				carrello.add(prodotto); 
+				break; 
+			}
+		session.setAttribute("carrello", carrello);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public void rimuoviDaCarrello(HttpSession session, int id) {
+		List<Prodotto> carrello= (List<Prodotto>) session.getAttribute("carrello");
+		for(Prodotto prodotto: carrello)
+			if(prodotto.getId()==id) {
+				carrello.remove(prodotto); 
+				break; 
+			}
+		
 	}
 }

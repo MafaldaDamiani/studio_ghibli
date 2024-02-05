@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.corso.model.Prodotto;
 import it.corso.service.ProdottoService;
+import jakarta.servlet.http.HttpSession;
 
 // localhost:8080/catalogo
 @Controller
 @RequestMapping("/catalogo")
 public class CatalogoController {
+	
 	@Autowired
 	private ProdottoService prodottoService;
+	
 	@GetMapping 
 	public String getPaginaFilm(
 		@RequestParam("tipologia")String tipologia,
@@ -60,5 +63,16 @@ public class CatalogoController {
 		}
 		model.addAttribute("catalogo", catalogo);
 		return "catalogo";
+	}
+	
+	//localhost:8080/catalogo/aggiungi
+	@GetMapping ("/aggiungi")
+	public String gestioneAggiunta(@RequestParam("id")int id, HttpSession session) {
+		
+		if (session.getAttribute("utente")== null)
+			 return "redirect:/login"; 
+		
+		prodottoService.aggiungiACarrello(session, id); 
+		return "redirect:/"; 
 	}
 }
