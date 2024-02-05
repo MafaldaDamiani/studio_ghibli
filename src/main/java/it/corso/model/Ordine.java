@@ -67,6 +67,12 @@ public class Ordine {
 	public void setImporto(double importo) {
 		this.importo = importo;
 	}
+	public List<Prodotto> getProdotti() {
+		return prodotti;
+	}
+	public void setProdotti(List<Prodotto> prodotti) {
+		this.prodotti = prodotti;
+	}
 	public int getQuantita() {
 		return quantita;
 	}
