@@ -39,6 +39,9 @@ public class Prodotto {
 	
 	@Column(name="immagine")
 	private String immagine; 
+
+	@Column(name="immagine_due")
+	private String immagineDue;	
 	
 	@Column(name="data_inserimento")
 	private LocalDate dataInserimento;
@@ -108,6 +111,12 @@ public class Prodotto {
 	public void setImmagine(String immagine) {
 		this.immagine = immagine;
 	}
+	public String getImmagineDue() {
+		return immagineDue;
+	}
+	public void setImmagineDue(String immagineDue) {
+		this.immagineDue = immagineDue;
+	}	
 	public LocalDate getDataInserimento() {
 		return dataInserimento;
 	}
@@ -120,5 +129,4 @@ public class Prodotto {
 	public void setQuantitaDisponibile(int quantitaDisponibile) {
 		this.quantitaDisponibile = quantitaDisponibile;
 	} 
-
 }
