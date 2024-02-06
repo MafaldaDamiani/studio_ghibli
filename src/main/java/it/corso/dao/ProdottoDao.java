@@ -10,6 +10,8 @@ public interface ProdottoDao extends CrudRepository<Prodotto, Integer> {
 	List<Prodotto> getProdottiPerTipologia(@Param("t") String tipologiaProdotto);
 	@Query(value = "SELECT * FROM prodotti WHERE categoria =:c", nativeQuery = true)
 	List<Prodotto> getProdottiPerCategoria(@Param("c") String categoriaProdotto);
+	@Query(value = "SELECT * FROM prodotti WHERE fk_id_film =:f", nativeQuery = true)
+	List<Prodotto> getTuttiProdottiPerFilm(@Param("f") int filmProdotto);	
 	@Query(value = "SELECT * FROM prodotti WHERE fk_id_film =:f AND tipologia_prodotto != 'Film'", nativeQuery = true)
 	List<Prodotto> getProdottiPerFilm(@Param("f") int filmProdotto);
 	@Query(value = "SELECT * FROM prodotti WHERE tipologia_prodotto =:t ORDER BY prezzo ASC", nativeQuery = true)
@@ -26,5 +28,10 @@ public interface ProdottoDao extends CrudRepository<Prodotto, Integer> {
 	@Query("SELECT p FROM Prodotto p JOIN p.film f WHERE f.genere LIKE %:g% AND p.tipologiaProdotto = 'Film'")
 	List<Prodotto> getProdottiPerGenere(@Param("g") String genereFilm);
 	@Query("SELECT p FROM Prodotto p JOIN p.film f WHERE f.noleggio =:n AND p.tipologiaProdotto = 'Film'")
-	List<Prodotto> getProdottiPerNoleggio(@Param("n") String noleggioFilm);	
+	List<Prodotto> getProdottiPerNoleggio(@Param("n") String noleggioFilm);
+	// Query personalizzata. 
+	// Query JPQL per recuperare un Prodotto con tutte le sue relazioni Film basandoci sull'id e sulla tipologiaProdotto.
+	// Utilizzando JOIN FETCH, è possibile eseguire una singola Query che recupera sia l'entità principale che le sue associazioni correlate.
+	@Query("SELECT p FROM Prodotto p LEFT JOIN FETCH p.film WHERE p.id = :i AND p.tipologiaProdotto = :t")
+	Prodotto getProdottoFilmByIdAndTipologia(@Param("i") int id, @Param("t") String tipologiaProdotto);
 }

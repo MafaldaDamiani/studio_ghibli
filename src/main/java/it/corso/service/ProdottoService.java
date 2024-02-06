@@ -10,12 +10,15 @@ public interface ProdottoService {
 	List<Prodotto> getProdotti();
 	List<Prodotto> getProdottiPerTipologia(String tipologiaProdotto);
 	List<Prodotto> getProdottiPerCategoria(String categoriaProdotto);
+	List<Prodotto> getProdottiPerFilm(int filmProdotto);
 	List<Prodotto> getMerchandisingPerFilm(int filmProdotto);
 	List<Prodotto> getProdottiPerPrezzoCrescente(String tipologiaProdotto);
 	List<Prodotto> getProdottiPerPrezzoDecrescente(String tipologiaProdotto);
 	List<Prodotto> getFilmPerRating(String ratingFilm);
 	List<Prodotto> getFilmPerGenere(String genereFilm);
 	List<Prodotto> getFilmPerNoleggio (String noleggioFilm);
+	Prodotto getProdottoFilmPerIdETipologia(int id, String tipologiaProdotto);
 	void aggiungiACarrello(HttpSession session, int id);
-	void rimuoviDaCarrello(HttpSession session, int id); 
+	void rimuoviDaCarrello(HttpSession session, int id);
+	 
 }

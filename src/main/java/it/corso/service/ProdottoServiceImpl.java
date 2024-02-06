@@ -30,7 +30,11 @@ public class ProdottoServiceImpl implements ProdottoService{
 	@Override
 	public List<Prodotto> getProdottiPerCategoria(String categoriaProdotto) {
 		return prodottoDao.getProdottiPerCategoria(categoriaProdotto);
-	} 
+	}
+	@Override
+	public List<Prodotto> getProdottiPerFilm(int filmProdotto) {
+		return prodottoDao.getTuttiProdottiPerFilm(filmProdotto);
+	}
 	@Override
 	public List<Prodotto> getMerchandisingPerFilm(int filmProdotto) {
 		return prodottoDao.getProdottiPerFilm(filmProdotto);
@@ -55,7 +59,10 @@ public class ProdottoServiceImpl implements ProdottoService{
 	public List<Prodotto> getFilmPerNoleggio(String noleggioFilm) {
 		return prodottoDao.getProdottiPerNoleggio(noleggioFilm);
 	}
-	
+	@Override
+	public Prodotto getProdottoFilmPerIdETipologia(int id, String tipologiaProdotto) {
+		return prodottoDao.getProdottoFilmByIdAndTipologia(id, tipologiaProdotto);
+	}
 	@SuppressWarnings("unchecked")
 	@Override
 	public void aggiungiACarrello(HttpSession session, int id) {

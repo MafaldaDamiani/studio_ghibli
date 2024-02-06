@@ -19,7 +19,7 @@ public class CatalogoController {
 	private ProdottoService prodottoService;
 	
 	@GetMapping 
-	public String getPaginaFilm(
+	public String getPagina(
 		@RequestParam("tipologia")String tipologia,
 		@RequestParam(name = "filtro", required = false)String filtro,
 		@RequestParam(name = "nome", required = false)String tipoFiltro,
