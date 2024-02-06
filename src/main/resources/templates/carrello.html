@@ -3,22 +3,47 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Carrello</title>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 	</head>
 	<body>
 		<h4 style="text-align: center;">Il tuo carrello</h4>
-		<div class="d-flex justify-content-evenly">
-    <div th:each="prodotto : ${carrello}" class="card" style="width: 16rem;">
-  	<img class="card-img-top" th:src="@{${prodotto.immagine}}" alt="Prodotto">
-  	<div class="card-body">
-    <h5 class="card-title" th:text="${prodotto.nome}"></h5>
-    <p class="card-text" th:text="${prodotto.descrizione}"></p>
-    <a th:href="@{carrello/rimuovi(id=${prodotto.id})}" class="btn btn-primary">Rimuovi dal carrello</a>
-  	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-8">
+			    <div th:each="prodotto : ${carrello}" class="card mb-3" style="max-width: 540px;">
+				  <div class="row g-0">
+				    <div class="col-md-4">
+				      <img th:src="@{${prodotto.immagine}}" class="img-fluid rounded-start" alt="...">
+				    </div>
+				    <div class="col-md-8">
+				      <div class="card-body">
+				        <h5 th:text="${prodotto.nome}" class="card-title"></h5>
+				        <p th:text="${prodotto.descrizione}" class="card-text"></p>
+				        <a th:href="@{carrello/rimuovi(id=${prodotto.id})}" class="btn btn-primary">Rimuovi dal carrello</a>
+				        
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-4">
+				<h2>Riepilogo dati spedizione</h2>
+				<p th:text="'Utente: ' + ${utente.nome} + ' ' + ${utente.cognome}"></p>
+				<p th:text="'Indirizzo: ' + ${utente.indirizzo} + ', ' + ${utente.citta} + ', ' + ${utente.provincia} + ', ' + ${utente.cap}"></p>
+				<p th:text="'Email: ' + ${utente.email}"></p>
+				<p th:text="'Numero di telefono: ' + ${utente.numeroDiTelefono}"></p>
+				<a class="btn btn-primary">Paga con Paypal</a>
+				
+				
+			</div>
+		</div>
 	</div>
-	</div>
+	
 		<a th:href="@{/}" class="btn btn-primary">Torna a catalogo</a>
+		
+		
 		<a th:href="@{/ordine/aggiungi}" class="btn btn-primary">Procedi all'ordine</a>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> 
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 	</body>
 </html>

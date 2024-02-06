@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.model.Prodotto;
+import it.corso.model.Utente;
 import it.corso.service.ProdottoService;
 import jakarta.servlet.http.HttpSession;
 
@@ -28,7 +29,9 @@ public class CarrelloController {
 			 return "redirect:/login"; 
 		 
 		 List<Prodotto> carrello= (List<Prodotto>) session.getAttribute("carrello");
-			model.addAttribute("carrello", carrello); 
+		 Utente utente= (Utente) session.getAttribute("utente"); 
+			model.addAttribute("carrello", carrello);
+			model.addAttribute("utente", utente); 
 			return "carrello";
 
 	}
