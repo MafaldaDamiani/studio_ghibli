@@ -19,6 +19,5 @@ public interface ProdottoService {
 	List<Prodotto> getFilmPerNoleggio (String noleggioFilm);
 	Prodotto getProdottoFilmPerIdETipologia(int id, String tipologiaProdotto);
 	void aggiungiACarrello(HttpSession session, int id);
-	void rimuoviDaCarrello(HttpSession session, int id);
-	 
+	void rimuoviDaCarrello(HttpSession session, int id); 
 }

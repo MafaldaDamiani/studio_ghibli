@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Dettaglio prodotto</title>
+		<link rel="stylesheet" href="css/styleDettaglio.css">
+	</head>
+	<body>
+       <div class="nav">
+        	<a th:href=@{/}>HOME</a>
+        	<a th:href="@{/catalogo(tipologia='Film')}">FILM</a>
+        	<a th:href="@{/catalogo(tipologia='Merchandising')}">MERCHANDISING</a>
+        </div>
+        <!-- Questo dipo di dettaglio prodotto verrà visulazzato solo se si tratta di merchandising. -->
+    	<div th:if="${tipologia} == 'Merchandising'" class="dettaglio-prodotto">
+            <div class="immagini">
+                <img th:if="${prodotto.immagineDue} != null" th:src="${prodotto.immagineDue}" class="seconda-img" alt="Immagine Prodotto">
+                <img th:src="${prodotto.immagine}" class="prima-img" alt="Immagine Prodotto">
+            </div>
+            <div class="specifiche-dettaglio">
+                <h2 th:text="${prodotto.nome}" class="nome-dettaglio"></h2>
+                <div class="specifica"><p class="tipo-specifica">Categoria: </p><p th:text="${prodotto.categoria}" class="categoria-dettaglio"></p></div>
+                <div class="specifica"><p class="tipo-specifica">Quantità disponibile: </p><p th:text="${prodotto.quantitaDisponibile}" class="categoria-dettaglio"></p></div>
+                 <div class="descrizione-dettaglio">
+	                <p class="tipo-specifica">Descrizione: </p>
+	                <p th:text="${prodotto.descrizione}"></p>
+                </div>               
+                <p th:text="'€' + ${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}" class="prezzo-dettaglio"></p>
+                <button class="aggiungi-carrello-dettaglio">AGGIUNGI AL CARRELLO</button>
+            </div>
+          </div>
+          <!-- Questo dipo di dettaglio prodotto verrà visulazzato solo se si tratta di film. -->
+         <div th:if="${tipologia} == 'Film'" class="dettaglio-prodotto">
+            <div class="immagini">
+                <img th:src="${prodotto.immagine}" class="prima-img" alt="Immagine Prodotto">
+            </div>
+            <div class="specifiche-dettaglio">
+               	<h2 th:text="${prodotto.nome}" class="nome-dettaglio"></h2>
+                <div class="specifica"><p class="tipo-specifica">Categoria: </p><p th:text="${prodotto.categoria}" class="categoria-dettaglio"></p></div>
+                <div class="specifica"><p class="tipo-specifica">Genere: </p><p th:text="${prodotto.film.genere}" class="categoria-dettaglio"></p></div>
+                <div class="specifica"><p class="tipo-specifica">Rating: </p><p th:text="${prodotto.film.rating}" class="categoria-dettaglio"></p></div>
+                <div class="specifica"><p class="tipo-specifica">Possibilità di noleggio: </p><p th:text="${prodotto.film.noleggio}" class="categoria-dettaglio"></p></div>
+                <div class="specifica"><p class="tipo-specifica">Quantità disponibile: </p><p th:text="${prodotto.quantitaDisponibile}" class="categoria-dettaglio"></p></div>
+                <div class="descrizione-dettaglio">
+	                <p class="tipo-specifica">Descrizione: </p>
+	                <p th:text="${prodotto.descrizione}"></p>
+                </div>
+                <p th:text="'€' + ${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}" class="prezzo-dettaglio"></p>                
+                <button class="aggiungi-carrello-dettaglio">AGGIUNGI AL CARRELLO</button>
+            </div>
+          </div> 
+          <h2 class="consigli">Prodotti correlati</h2>
+          <div class="consigliati">
+                <div th:each="prodotto : ${catalogo}" class="card-prodotto">
+                   <div class="immagine-container">
+			            <img th:src="${prodotto.immagine}" alt="Immagine Prodotto" class="card-immagine">
+			       </div>
+                   <div class="nome"><h2 th:text=${prodotto.nome} ></h2></div>
+                   <p th:text=${prodotto.categoria} class="categoria"></p>
+                   <p th:text="'€' + ${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}" class="prezzo"></p>
+                   <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}"><button class="vedi-dettaglio">DETTAGLIO PRODOTTO</button></a>
+                   <a th:href="@{catalogo/aggiungi(id=${prodotto.id})}"><button  class="aggiungi-carrello">AGGIUNGI AL CARRELLO</button></a>
+                </div>
+          </div>
+          <div class="footer"></div>      	       		
+	</body>
+</html>
