@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.corso.model.Prodotto;
 import it.corso.model.Utente;
+import it.corso.service.OrdineService;
 import it.corso.service.ProdottoService;
 import jakarta.servlet.http.HttpSession;
 
@@ -17,7 +18,10 @@ import jakarta.servlet.http.HttpSession;
 public class CarrelloController {
 	
 	@Autowired
-	public ProdottoService prodottoService; 
+	public ProdottoService prodottoService;
+	
+	@Autowired
+	public OrdineService ordineService; 
 	
 	@SuppressWarnings("unchecked")
 	@GetMapping
@@ -40,6 +44,12 @@ public class CarrelloController {
 		prodottoService.rimuoviDaCarrello(session, idArticolo);
 		return "redirect:/carrello"; 
 		}
+	
+	@GetMapping("/aggiungi")
+	public String aggiungiOrdine(HttpSession session) {
+		ordineService.aggiungiOrdine(session);
+		return "redirect:/carrello";
+	}
 			
 
 }

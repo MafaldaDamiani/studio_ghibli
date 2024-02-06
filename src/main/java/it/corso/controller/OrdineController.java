@@ -16,13 +16,11 @@ import jakarta.servlet.http.HttpSession;
 public class OrdineController {
 	
 	@Autowired
-	private OrdineService ordineService;
+	private OrdineService ordineService;	
 	
-	@Autowired
-	private ProdottoService prodottoService;
 	
-	//localhost:8080/ordine?id=1
-	//localhost:8080/ordine/1
+	
+	//localhost:8080/ordine
 	@GetMapping
 	public String getPage(Model model, HttpSession session) {
 		if (session.getAttribute("utente")== null)
@@ -34,12 +32,12 @@ public class OrdineController {
 		
 	}
 	
-	//localhost:8080/ordine
-	@GetMapping("/aggiungi")
+	
+	/*@GetMapping("/aggiungi")
 	public String aggiungiOrdine(HttpSession session) {
 		ordineService.aggiungiOrdine(session);
 		return "redirect:/ordine";
-	}
+	}*/
 	
 	/*@GetMapping("/id")
 	public String getDettagliOrdine(@RequestParam ("id") String idOrdine, Model model) {
