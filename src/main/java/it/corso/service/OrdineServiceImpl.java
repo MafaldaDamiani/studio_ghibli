@@ -1,13 +1,9 @@
 package it.corso.service;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import it.corso.dao.OrdineDao;
 import it.corso.model.Ordine;
 import it.corso.model.Prodotto;
@@ -71,6 +67,8 @@ public class OrdineServiceImpl implements OrdineService {
 		//Restituisco la lista con gli ordini filtrati
 		return ordiniUtente;
 	}
+
+
 
 	/*
 	 * getOrdiniByUtente

@@ -12,4 +12,5 @@ public interface OrdineService {
 	List<Ordine> getOrdini();
 	Ordine getOrdineById(int id);
 	List<Ordine> getOrdiniByUser(Utente utente);
+	
 }

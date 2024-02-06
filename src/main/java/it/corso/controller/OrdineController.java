@@ -1,17 +1,14 @@
 package it.corso.controller;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import it.corso.model.Ordine;
 import it.corso.model.Utente;
 import it.corso.service.OrdineService;
+import it.corso.service.ProdottoService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -20,6 +17,9 @@ public class OrdineController {
 	
 	@Autowired
 	private OrdineService ordineService;
+	
+	@Autowired
+	private ProdottoService prodottoService;
 	
 	//localhost:8080/ordine?id=1
 	//localhost:8080/ordine/1
@@ -41,10 +41,16 @@ public class OrdineController {
 		return "redirect:/ordine";
 	}
 	
-	/*@GetMapping("/{id}")
-	public String getDettagliOrdine(@PathVariable String id) {
-		//ordineService.getDettagliOrdine(id)
+	/*@GetMapping("/id")
+	public String getDettagliOrdine(@RequestParam ("id") String idOrdine, Model model) {
+		try {
+			int id=Integer.parseInt(idOrdine);
+			List<Prodotto> prodottiOrdine= ordineService.getOrdineById(id).getProdotti();
+			model.addAttribute("prodottiOrdine", prodottiOrdine);
+		}catch(Exception e) {
+			return "redirect:/carrello";
+		}
 		return "ordine";
+		
 	}*/
-
 }

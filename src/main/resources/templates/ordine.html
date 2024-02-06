@@ -31,7 +31,14 @@
 								<td th:text="'Euro ' + ${#numbers.formatDecimal(o.importo,0,'POINT',2,'COMMA')}"></td>
 								<td th:text="${o.utente.nome}"></td>
 								<td th:text="${o.utente.cognome}"></td>
-								<td ><a th:href="@{ordine/{id}(id=${o.id})}">Dettaglio</a></td>
+								
+						<td> <div class="dropdown"> <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Dettagli </button> 
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> 
+						<li th:each="prodotto : ${o.prodotti}"><a class="dropdown-item" th:text="${prodotto.nome} + ', ' + ${prodotto.prezzo} + ' Euro'"></a></li> 
+						</ul> 
+						</div> 
+						</td>
+			
 								<td class="text-end">
 								</td>
 							</tr>
