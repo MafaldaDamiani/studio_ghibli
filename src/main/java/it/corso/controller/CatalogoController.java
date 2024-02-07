@@ -23,7 +23,16 @@ public class CatalogoController {
 		@RequestParam("tipologia")String tipologia,
 		@RequestParam(name = "filtro", required = false)String filtro,
 		@RequestParam(name = "nome", required = false)String tipoFiltro,
-		Model model) {
+		Model model,
+		HttpSession session) {
+		String utente;
+		if (session.getAttribute("utente") == null) {
+			utente = "no";
+		}
+		else {
+			utente = "si";
+		}
+		model.addAttribute("utente", utente);
 		model.addAttribute("tipologiaLink", tipologia);
 		model.addAttribute("tipologiaTesto", tipologia.toUpperCase());
 		List <Prodotto> catalogo = null;

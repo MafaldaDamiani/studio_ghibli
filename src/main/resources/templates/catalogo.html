@@ -38,6 +38,14 @@
                         <li class="nav-item">
                             <a th:href="@{/catalogo(tipologia='Merchandising')}" class="nav-link" href="">Merchandising</a>
                         </li>
+                        <!-- Link a Carrello -->
+                        <li th:if="${utente}=='si'" class="nav-item">
+                            <a th:href="@{/carrello}" class="nav-link" href="">Carrello</a>
+                        </li>
+                        <!-- Link a Logout -->
+                        <li th:if="${utente}=='si'" class="nav-item">
+                            <a th:href="@{/logout}" class="nav-link" href="">Esci</a>
+                        </li>
                     </ul>
                     <button class="btn btn-outline-light btn-close" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
