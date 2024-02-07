@@ -132,26 +132,45 @@ a.text-lightreg {
 }
 /* Fine solo Home Page */
 
-/* solo registrazione */
-        .regbg-img {
-            height: 900px;
 
-        }
-        
-        .errore{
-        font-size: 15px; 
-        }
+/* Solo registrazione */
+.regbg-img {
+    height: 900px;
+
+}
+.errore{
+	font-size: 15px; 
+}
 /* fine solo registrazione*/
 
-  /* solo login */
-        .loginbg-img {
-            width: 100;
-            height: 750px;
-        }
-/* fine login */
+
+/* Solo login */
+.loginbg-img {
+    width: 100;
+    height: 750px;
+}
+/* Fine login */
+
 
 /* Solo Pagina Catalogo */
-
+.filmcontainer-xxl-slider{
+    position: relative;
+    height: 800px;
+    overflow: hidden;
+}
+.filmslider-section .overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 35%;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 1;
+}
+.filmslider-section {
+	position: relative;
+	height: 100%;
+}
 /* Fine solo Pagina Catalogo */
 
 
