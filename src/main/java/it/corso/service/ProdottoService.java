@@ -18,6 +18,7 @@ public interface ProdottoService {
 	List<Prodotto> getFilmPerGenere(String genereFilm);
 	List<Prodotto> getFilmPerNoleggio (String noleggioFilm);
 	Prodotto getProdottoFilmPerIdETipologia(int id, String tipologiaProdotto);
+	List<Prodotto> getMerchandisingPerData();
 	void aggiungiACarrello(HttpSession session, int id);
 	void rimuoviDaCarrello(HttpSession session, int id); 
 }

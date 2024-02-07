@@ -34,4 +34,6 @@ public interface ProdottoDao extends CrudRepository<Prodotto, Integer> {
 	// Utilizzando JOIN FETCH, è possibile eseguire una singola Query che recupera sia l'entità principale che le sue associazioni correlate.
 	@Query("SELECT p FROM Prodotto p LEFT JOIN FETCH p.film WHERE p.id = :i AND p.tipologiaProdotto = :t")
 	Prodotto getProdottoFilmByIdAndTipologia(@Param("i") int id, @Param("t") String tipologiaProdotto);
+	@Query(value = "SELECT * FROM prodotti WHERE tipologia_prodotto ='Merchandising' ORDER BY data_inserimento DESC", nativeQuery = true)
+	List<Prodotto> getProdottiPerData();	
 }

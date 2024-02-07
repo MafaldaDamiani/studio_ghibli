@@ -3,13 +3,246 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Home Page</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Macondo&display=swap" rel="stylesheet">
+        <link href="assets/CSS/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/styleHome.css">
 	</head>
 	<body>
-		<a th:href="@{/registrazione}">Registrati</a>
-		<a th:href="@{/login}">Accedi</a>	
-		<a th:href="@{/logout}">Esci</a>
-		<a th:href="@{/catalogo(tipologia=Film)}">Film</a>	
-		<a th:href="@{/catalogo(tipologia='Merchandising')}">Merchandising</a>	
-		<a th:href="@{/carrello}">Carrello</a>			
+		 <!-- navbar -->
+        <nav class="navbar fixed-top pt-0" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="font-family: 'Playfair Display', serif;" href="#"></a>
+                <button class="navbar-toggler mt-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation" style="border: none;">
+                    <img src="immagini/home/fuligine.png" alt="Menu" style="width: 80px; outline: none;">
+                    <br>
+                    <span style="color: white;">Menu</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-12">
+                        <!-- link a Home -->
+                        <li class="nav-item">
+                            <a th:href="@{/}" class="nav-link active" aria-current="page" href="">Home</a>
+                        </li>
+                        <!-- link a Film -->
+                        <li class="nav-item">
+                            <a th:href="@{/catalogo(tipologia=Film)}" class="nav-link" href="">Film</a>
+                        </li>
+                        <!-- link a Merchandising -->
+                        <li class="nav-item">
+                            <a th:href="@{/catalogo(tipologia='Merchandising')}" class="nav-link" href="">Merchandising</a>
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline-light btn-close" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Close">
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- navbar -->
+		
+        <!-- slider -->
+        <div class="HPslider-section">
+            <div class="overlay"></div>
+            <div class="HPcontainer-xxl-slider"
+                style="background-image: url(immagini/home/porco_film.jpeg); background-repeat: no-repeat; background-size: cover;">
+                <div class="row">
+                    <div class="col-2 sopra">
+                        <img src="immagini/home/logo.png" class="d-none d-sm-block">
+                    </div>
+                    <div class="col-10 col-sm-6 col-md-4">
+                        <h1 class="display-1 sopra" style="color:#fd9c6b; margin-top: 300px;">Studio Ghibli</h1>
+                        <h5 class="text-light sopra">Benvenuti nel magico mondo dello Studio Ghibli! Esplora la nostra
+                            collezione di film e prodotti ispirati ai capolavori dell'animazione giapponese. Entra e
+                            lasciati trasportare in un viaggio indimenticabile!</h5>
+                        <div class="mb-3 mt-4 d-flex align-items-end justify-content-start ">
+                            <!-- link a Registrati -->
+                            <a th:href="@{/registrazione}" class="btn sopra">Registrati</a>
+                        </div>
+                        <div class="mb-3 mt-4 d-flex align-items-end justify-content-start ">
+                            <!-- link a Login -->
+                            <a th:href="@{/login}" class="btn sopra">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- slider -->
+        
+        <!-- director  -->
+        <div class="director" style="margin-top: 100px; margin-bottom: 50px;">
+            <div class="container">
+                <div class="row justify-content-center align-items-center ps-5 pe-5">
+                    <div class="col-10 col-md-6">
+                        <div class="detail-box">
+                            <h1 class="justify-content-end ">Hayao Miyazaki</h1>
+                            <p class="mt-5 me-5">Hayao Miyazaki è un celebre regista, animatore, sceneggiatore e produttore
+                                cinematografico giapponese. La sua genialità artistica ha dato vita a opere d'animazione
+                                indimenticabili, amate da milioni di persone in tutto il mondo.</p>
+                            <p> Attraverso film come 'La Città Incantata', 'Il Castello Errante di Howl' e 'La Principessa
+                                Mononoke', Miyazaki ha trasportato il pubblico in mondi fantastici ricchi di bellezza, magia
+                                e profondità emotiva. </p>
+                            <p>Il suo contributo all'industria dell'animazione va oltre il semplice intrattenimento,
+                                ispirando generazioni di artist e spettatori con la sua visione unica e la sua capacità di
+                                creare storie che toccan il cuore e stimolano l'immaginazione.</p>
+                        </div>
+                    </div>
+                    <div class="col-10 col-md-6 d-none d-md-block">
+                        <div class="img-box">
+                            <img src="immagini/home/miyazaki.jpg" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- director -->  
+        
+        <!-- latest -->
+        <div class="latest" style="margin-top: 100px; margin-bottom: 50px;">
+            <div class="container">
+                <h1 class="text-center mb-5 mt-5" style="color: #fd9c6b;"> Ultimi Arrivi</h1>
+                <div class="row justify-content-center">
+                    <!-- Card Merchandising -->
+                    <div th:each="prodotto : ${novita}" class="col-6 col-md-4">
+                        <div class="card m-3 mb-5">
+                            <div class="image-container">
+                                <img th:src=${prodotto.immagine} class="card-img-top" alt="">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <div class="d-flex align-items-center" style="height:50px"><h5 th:text="${prodotto.nome}" class="card-title fw-bold text-center"></h5></div>
+                                <p th:text="${prodotto.categoria}" class="card-text text-muted"></p>
+                                <p th:text="'Prezzo: ' + '€' + ${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}" class="card-text"></p>
+                                <div class="d-flex row">
+                                    <div class="btn-group mb-2" role="group" aria-label="Pulsanti">
+                                        <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-info">Dettaglio Prodotto</a>
+                                    </div>
+                                    <div class="btn-group" role="group" aria-label="Pulsanti">
+                                        <a th:href="@{catalogo/aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Aggiungi al carrello</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card Merchandising -->              
+                </div>
+                <!-- Link alla pagina del Merchandising -->
+                <div class="mb-3 d-flex align-items-center justify-content-center ">
+                    <a th:href="@{/catalogo(tipologia='Merchandising')}"><button class="btn btn-xl text-center align-items-center">Vedi tutti i prodotti</button></a>
+                </div>
+            </div>
+        </div>
+        <!-- latest end-->
+        
+        <!-- 38 anni -->
+        <div class="about" style="margin-top: 50px; margin-bottom: 50px;">
+            <div class="container">
+                <div class="row justify-content-center ps-5 pe-5">
+                    <div class="col-10 col-md-6 d-none d-sm-block">
+                        <div class="img-box">
+                            <img src="immagini/home/incantata_film.jpeg" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-10 col-md-6 ">
+                        <div class="detail-box">
+                            <h1 class="justify-content-end mt-5 ms-3" style="color:#fd9c6b">38 anni dello Studio Ghibli
+                            </h1>
+                            <p class="mt-2 ms-3  me-5 mt-5">Il 15 giugno 1985 segna l'inizio di un'avventura
+                                straordinaria: lo Studio Ghibli apre ufficialmente le sue porte al mondo
+                                dell'animazione. Da allora, per 38 anni, lo Studio ha incantato e ispirato milioni di
+                                persone in tutto il mondo con le sue opere d'arte animate.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 38 anni end -->
+        
+        <!-- movie -->
+        <div class="latest" style="margin-top: 100px; margin-bottom: 50px;">
+            <div class="container">
+                <h1 class="text-center" style="color: #fd9c6b; margin-bottom: 10px;"> Acquista i film</h1>
+                <H4 class="text-center text-muted" style="margin-bottom: 50px;"> disponibili anche in formato digitale</H4>
+                <div class="row justify-content-center">
+                    <!-- Card Film completamente dinamica -->
+                    <div th:each="prodotto : ${film}" class="col-6 col-md-4">
+                        <div class="card m-3 mb-5">
+                            <div class="image-container">
+                                <img th:src="${prodotto.immagine}" class="card-img-top" alt="">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <div class="card-body d-flex flex-column align-items-center">
+                            	<div class="d-flex align-items-center" style="height:50px"><h5 th:text="${prodotto.nome}" class="card-title fw-bold text-center"></h5></div>
+                                <p th:text="${prodotto.categoria}" class="card-text text-muted"></p>
+                                <div class="d-flex row">
+                                    <div class="btn-group" role="group" aria-label="Pulsanti">
+                                        <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Dettaglio Prodotto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fine Card Film -->
+                </div>                    
+                <!-- Link alla pagina dei Film -->
+                <div class="mb-3 d-flex align-items-center justify-content-center ">
+                    <a th:href="@{/catalogo(tipologia=Film)}"><button class="btn btn-xl text-center align-items-center">Vedi tutti i film</button></a>
+                </div>
+            </div>
+        </div>
+        <!-- movie end -->
+        
+        <!-- footer -->
+        <div class="container-xxxl  containerhedfot" id="hedfot">
+            <div class="row justify-content-center">
+                <div class="col-10 col-md-2 mt-5">
+                    <h4 class="text-start text-light">Menu</h4>
+                    <!-- Link alla pagina Home -->
+                    <div class="text-start  mb-2">
+                        <a th:href="@{/}" class="text-light" style="text-decoration: none;"> Home </a>
+                    </div>
+                    <!-- Link alla pagina dei Film -->
+                    <div class="text-start text-light mb-2">
+                        <a th:href="@{/catalogo(tipologia=Film)}" class="text-light" style="text-decoration: none;"> Film </a>
+                    </div>
+                    <!-- Link alla pagina del Merchandising -->
+                    <div class="text-start text-light mb-2 mb-5">
+                        <a th:href="@{/catalogo(tipologia='Merchandising')}" class="text-light" style="text-decoration: none;"> Merchandising </a>
+                    </div>
+                </div>
+                <div class="col-10 col-md-4 mt-5">
+                    <h4 class="text-start text-light">Su di Noi</h4>
+                    <p class="text-light">La passione di Gaspare Pero per Miyazaki, ci ha spinte, contro la nostra volontà ad esplorare il mondo mistico e meravigiouso dello Studio Ghibli. Sappiamo tutti che le tracce le ha imposte lui.</p>
+                </div>
+                <div class="col-10 col-md-2 mt-5">
+                    <h4 class="text-start text-light">Contattaci</h4>
+                    <div class="mb-3 mt-3">
+                        <a href="#" class="text-light" style="text-decoration: none;">
+                            <i class="bi bi-telephone"> 0749875423</i>
+                    </div>
+                    <div>
+                        <a href="#" class="text-light" style="text-decoration: none;">
+                            <i class="bi bi-envelope"> ghiblistore@gmail.com</i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-10 col-md-2 mt-5">
+                    <img src="immagini/home/logo.png" alt="" style="max-width: 100%; height: auto;" class="img-fluid">
+                </div>
+            </div>
+        </div>                                     
+		<!-- footer -->
+		        		
 	</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>	
 </html>
+<!-- <a th:href="@{/logout}">Esci</a> -->

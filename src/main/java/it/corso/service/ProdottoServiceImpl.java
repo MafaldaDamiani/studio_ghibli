@@ -63,6 +63,10 @@ public class ProdottoServiceImpl implements ProdottoService{
 	public Prodotto getProdottoFilmPerIdETipologia(int id, String tipologiaProdotto) {
 		return prodottoDao.getProdottoFilmByIdAndTipologia(id, tipologiaProdotto);
 	}
+	@Override
+	public List<Prodotto> getMerchandisingPerData() {
+		return prodottoDao.getProdottiPerData();
+	} 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void aggiungiACarrello(HttpSession session, int id) {
