@@ -1,0 +1,144 @@
+/* Parti in comune */
+body {
+    font-family: 'Caveat', 'Macondo', cursive;
+}
+h5, a, p, label, h6 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;   
+}
+.h1, h2, h3, h4 {
+    font-family: 'Macondo', cursive;
+    font-size: x-large;
+}
+
+/* Inizio Nav */
+.navbar-collapse {
+    background-color: black;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.navbar-toggler .navbar-brand {
+    z-index: 1;   
+}
+.navbar-brand{
+    font-size:1.8em;
+    letter-spacing: 2px;
+}
+.navbar-collapse .nav-link{
+    font-size:1.5em ;
+    letter-spacing: 2px;
+}
+.navbar-collapse .nav-item{
+    border-bottom:1px solid black;
+    padding: 0.2em 4em;
+}
+.navbar-toggler-icon {
+ border: 1px solid white;
+ background-color: black;
+ border-radius: 10px;
+}
+.navbar-collapse {
+    transition: none; 
+}
+.btn-close {
+    position: absolute; 
+    top: 10px; 
+    right: 30px; 
+    padding: 0; 
+    border: none; 
+    background-color: transparent;      
+}  
+.btn-close i {
+    font-size: 10px; 
+    color: white; 
+}
+/* Fine nav */
+
+/* Inizio Footer */
+.containerhedfot {
+    background-color: black;
+}
+/* Fine Footer */ 
+
+/* Inizio Button */
+.btn{
+    background-color: #fd9c6b;
+    color:white; height: 37px;
+    font-family: 'Roboto', sans-serif; 
+}
+.btn:hover {
+    background-color: white;
+    color:#fd9c6b;
+    border-color:#fd9c6b;
+}
+/* Fine Button */
+
+/* Inizio a */
+a.text-light:hover {
+    color: #fd9c6b !important;
+}
+a.text-lightreg:hover {
+    color: white !important;
+}
+a.text-lightreg {
+    color: #fd9c6b !important;
+}
+/* Fine a */
+
+
+/* Solo Home Page */
+.HPcontainer-xxl-slider {
+    height: 800px;
+}
+.HPslider-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+.HPslider-section:hover .overlay {
+    display: none;
+}
+@media (min-width: 576px) {
+    .HPslider-section:hover .overlay {
+        display: block;
+        width: 50%;
+        height: 800px;
+        z-index: 0;
+    }
+}
+.btn.sopra{
+    background-color: transparent;
+    border: solid ;
+    border-color: #fd9c6b;
+    color: #fd9c6b;   
+}
+.btn:hover.sopra{
+    background-color: #fd9c6b;
+    color: white;
+}
+.sopra {
+    position: relative;
+    z-index: 3;
+}
+/* Fine solo Home Page */
+
+
+/* Solo Pagina Catalogo */
+
+/* Fine solo Pagina Catalogo */
+
+
+/* Solo Pagina Dettaglio */
+
+/* Fine solo Pagina Dettaglio */
+    
