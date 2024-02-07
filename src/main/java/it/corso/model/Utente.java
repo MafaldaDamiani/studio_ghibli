@@ -25,7 +25,7 @@ public class Utente {
 	@Column(name="nome")
 	private String nome;
 	
-	@Pattern(regexp = "[a-zA-Z'.\\s]{2,50}", message= "Caratteri non ammessi nel campo nome!")
+	@Pattern(regexp = "[a-zA-Z'.\\s]{2,50}", message= "Caratteri non ammessi nel campo cognome!")
 	@Column(name="cognome")
 	private String cognome;
 	
@@ -53,7 +53,7 @@ public class Utente {
 	@Column(name="provincia")
 	private String provincia;
 	
-	@Pattern(regexp = "[0-9]{5}$", message= "Caratteri non ammessi nel campo provincia!")
+	@Pattern(regexp = "[0-9]{5}$", message= "Caratteri non ammessi nel campo cap!")
 	@Column(name="cap")
 	private String cap;
 	
