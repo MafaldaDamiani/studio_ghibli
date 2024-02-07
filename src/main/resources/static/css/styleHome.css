@@ -132,6 +132,17 @@ a.text-lightreg {
 }
 /* Fine solo Home Page */
 
+/* solo registrazione */
+        .regbg-img {
+            height: 900px;
+
+        }
+        
+        .errore{
+        font-size: 15px; 
+        }
+/* fine solo registrazione*/
+
 
 /* Solo Pagina Catalogo */
 

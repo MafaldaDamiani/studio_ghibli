@@ -1,45 +1,204 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<title>Registrazione Utente</title>
-	</head>
-	<body>
-		<form method="post" th:object="${utente}">
-			<input type="text" th:field="*{nome}" placeholder="Inserire nome">
-			<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
-			<br>
-			<input type="text" th:field="*{cognome}" placeholder="Inserire cognome">
-			<p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></p>
-			<br>
-			<input type="date" th:field="*{dataDiNascita}" placeholder="Inserire data di nascita">
-			<p th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></p>
-			<br>
-			<input type="text" th:field="*{email}" placeholder="Inserire indirizzo email">
-			<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-			<br>
-			<input type="text" th:field="*{numeroDiTelefono}" placeholder="Inserire numero di telefono">
-			<p th:if="${#fields.hasErrors('numeroDiTelefono')}" th:errors="*{numeroDiTelefono}"></p>
-			<br>
-			<input type="text" th:field="*{citta}" placeholder="Inserire città">
-			<p th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}"></p>
-			<br>
-			<input type="text" th:field="*{indirizzo}" placeholder="Inserire indirizzo">
-			<p th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}"></p>
-			<br>
-			<input type="text" th:field="*{provincia}" placeholder="Inserire provincia">
-			<p th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}"></p>
-			<br>
-			<input type="text" th:field="*{cap}" placeholder="Inserire cap">
-			<p th:if="${#fields.hasErrors('cap')}" th:errors="*{cap}"></p>
-			<br>
-			<input type="text" th:field="*{username}" placeholder="Inserire username">
-			<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
-			<br>
-			<input type="password" th:field="*{password}" placeholder="Inserire password">
-			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
-			<br>
-			<input type="submit" value="Registra Utente">
-		</form>
-	</body>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registrazione</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/styleHome.css">
+    
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar fixed-top pt-0" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="font-family: 'Playfair Display', serif;" ; href="#"></a>
+            <button class="navbar-toggler mt-3" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation" style="border: none;">
+                <!-- IMMAGINE -->
+                <img src="immagini/home/fuligine.png" alt="Menu" style="width: 80px; outline: none;">
+                <br>
+                <span style="color: white;">Menu</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-12">
+                    <li class="nav-item">
+                        <!-- link Home -->
+                        <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- link Film -->
+                        <a class="nav-link " th:href="@{/catalogo(tipologia=Film)}">Film</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- link Merchandising -->
+                        <a class="nav-link" th:href="@{/catalogo(tipologia='Merchandising')}">Merchandising</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-light btn-close" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Close">
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar -->
+
+    <!-- Registrazione -->
+    <!-- IMMAGINE -->
+    <div class="container-xxxl regbg-img" style="background-image: url(immagini/home/CIELO.jpeg); color:white">
+        <div class="row justify-content-start ms-5">
+            <h1 style="color:#fd9c6b;font-weight: bold;
+                text-transform: uppercase;margin-top: 30px ;">Registrati al nostro Store</h1>
+        </div>
+        <form method="post" th:object="${utente}">
+        <div class=" row justify-content-start ms-5">
+            <div class="col-5  col-lg-3  mb-5">
+                <div class="mb-4 mt-3">
+                    <!-- Input nome -->
+                    <label for="exampleNome" class="form-label">Nome</label>                    
+                    <input type="text" th:field="*{nome}" class="form-control border-dark">
+					<p class="errore" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+                </div>
+                <div class="mb-4">
+                    <!-- Input cognome -->
+                    <label for="exampleCognome" class="form-label">Cognome</label>
+                    <input type="text" th:field="*{cognome}" class="form-control border-dark">
+					<p class="errore" th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></p>
+                </div>
+                <div class="mb-4">
+                    <!-- Input data di nascita -->
+                    <label for="exampleDataDiNascita" class="form-label">Data di nascita</label>                    
+                   	<input type="date" th:field="*{dataDiNascita}" class="form-control border-dark">
+					<p class="errore" th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></p>
+                </div>
+                <div class="mb-4">
+                    <!-- Input email -->
+                    <label for="exampleEmail" class="form-label">Email</label>                   
+                    <input type="text" th:field="*{email}" class="form-control border-dark" placeholder="qualcosa@gmail.com">
+					<p class="errore" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                </div>
+                <div class="mb-4">
+                    <!-- Input telefono -->
+                    <label for="exampleTelefono" class="form-label">Telefono</label>                    
+                    <input type="text" th:field="*{numeroDiTelefono}" class="form-control border-dark">
+					<p class="errore" th:if="${#fields.hasErrors('numeroDiTelefono')}" th:errors="*{numeroDiTelefono}"></p>
+                </div>
+                <div class="mb-4">
+                    <!-- Input citta -->
+                    <label for="exampleNome" class="form-label">Città</label>                    
+                    <input type="text" th:field="*{citta}" class="form-control border-dark">
+					<p class="errore" th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}"></p>
+                </div>
+            </div>
+            <div class="col-5 col-lg-3 mb-5">
+                <div class="mb-4 mt-3 ">
+                    <!-- Input indirizzo -->
+                    <label for="exampleNome" class="form-label">Indirizzo</label>                    
+                    <input type="text" th:field="*{indirizzo}" class="form-control border-dark">
+					<p class="errore" th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}"></p>
+                </div>
+                <div class="mb-4">
+                    <!-- Input provincia -->
+                    <label for="exampleNome" class="form-label">Provincia</label>                    
+                    <input type="text" th:field="*{provincia}" class="form-control border-dark">
+					<p class="errore" th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}"></p>
+                </div>
+                <div class="mb-4">
+                    <!-- Input CAP -->
+                    <label for="exampleNome" class="form-label">Cap</label>                    
+                    <input type="text" th:field="*{cap}"  class="form-control border-dark">
+					<p class="errore" th:if="${#fields.hasErrors('cap')}" th:errors="*{cap}"></p>
+                </div>
+                <div class="mb-4">
+                    <!-- Input Username -->
+                    <label for="exampleNome" class="form-label">Username</label>                   
+                    <input type="text" th:field="*{username}"  class="form-control border-dark">
+					<p class="errore" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                </div>
+                <div class="mb-4">
+                    <!-- Input password -->
+                    <label for="exampleNome" class="form-label">Password</label>                    
+                    <input type="password" th:field="*{password}" class="form-control border-dark">
+					<p class="errore" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                </div>
+                <div class="mb-3 d-flex align-items-end justify-content-center" style="margin-top: 55px;">
+                    <!-- Bottone registrati -->
+                    <input type="submit" value="Registra Utente" class="btn btn-md p-2 w-100 text-center regbutton border-dark" style="height: 41px;">
+                    <!--  <button class="btn btn-md p-2 w-100 text-center regbutton border-dark"
+                        style="height: 41px;"></button>-->
+                </div>
+            </div>
+        </div>
+        </form> 
+        <div class="row justify-content-start ms-5" style="margin-top: -40px;">
+            <div class="col-5  col-lg-3">
+                <div class="mb-2 d-flex justify-content-start align-items-center">
+                    <h6>Sei già registrato?</h6>
+                    <!-- link per login -->
+                    <a th:href="@{/login}" class="text-lightreg ms-3 mb-2" style="text-decoration: none;"> Login </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fine Registrazione -->
+
+    <!-- Footer -->
+    <div class="container-xxxl  containerhedfot" id="hedfot">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-2 mt-5">
+                <h4 class="text-start text-light">Menu</h4>
+                <div class="text-start  mb-2">
+                    <!--  Link Home  -->
+                    <a th:href="@{/}" class="text-light" style="text-decoration: none;"> Home </a>
+                </div>
+                <div class="text-start text-light mb-2">
+                    <!--  Link film  -->
+                    <a th:href="@{/catalogo(tipologia=Film)}" class="text-light" style="text-decoration: none;"> Film </a>
+                </div>
+                <div class="text-start text-light mb-2 mb-5">
+                    <!--  Link merchandising  -->
+                    <a th:href="@{/catalogo(tipologia='Merchandising')}" class="text-light" style="text-decoration: none;"> Merchandising </a> <!-- NUOVO -->
+                </div>
+            </div>
+            <div class="col-10 col-md-4 mt-5">
+                <h4 class="text-start text-light">Su di Noi</h4>
+                <!--  Mettere testo nuovo  -->
+                <p class="text-light">La passione di Gaspare Pero per Miyazaki, ci ha spinte, contro la nostra volontà ad esplorare il mondo mistico e meravigiouso dello Studio Ghibli. Sappiamo tutti che le tracce le ha imposte lui.</p>
+            </div>
+            <div class="col-10 col-md-2 mt-5">
+                <h4 class="text-start text-light">Contattaci</h4>
+                <div class="mb-3 mt-3">
+                    <a href="#" class="text-light" style="text-decoration: none;">
+                        <i class="bi bi-telephone"> 0749875423</i> 
+                       </a>
+                </div>
+                <div>
+                    <a href="#" class="text-light" style="text-decoration: none;">
+                        <i class="bi bi-envelope"> ghiblistore@gmail.com</i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-10 col-md-2 mt-5">
+                <!-- IMMAGINE -->
+                <img src="immagini/home/logo.png" alt="" style="max-width: 100%; height: auto;" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <!-- Fine Footer -->
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
 </html>
