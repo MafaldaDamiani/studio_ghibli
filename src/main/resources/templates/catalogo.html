@@ -10,6 +10,7 @@
         	<a th:href=@{/}>HOME</a>
         	<a th:href="@{/catalogo(tipologia='Film')}">FILM</a>
         	<a th:href="@{/catalogo(tipologia='Merchandising')}">MERCHANDISING</a>
+        	<a th:href="@{/carrello}">CARRELLO</a>
         </div>
         <!-- Questo menu con filtri apparirà solo ed esclusivamente nella sezione merchandising. -->
         <div th:if="${tipologiaTesto} == MERCHANDISING" class="filters">

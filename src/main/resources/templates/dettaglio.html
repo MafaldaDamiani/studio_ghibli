@@ -10,6 +10,7 @@
         	<a th:href=@{/}>HOME</a>
         	<a th:href="@{/catalogo(tipologia='Film')}">FILM</a>
         	<a th:href="@{/catalogo(tipologia='Merchandising')}">MERCHANDISING</a>
+        	<a th:href="@{/carrello}">CARRELLO</a>
         </div>
         <!-- Questo dipo di dettaglio prodotto verrà visulazzato solo se si tratta di merchandising. -->
     	<div th:if="${tipologia} == 'Merchandising'" class="dettaglio-prodotto">
