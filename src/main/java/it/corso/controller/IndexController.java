@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import it.corso.model.Prodotto;
 import it.corso.service.ProdottoService;
+import jakarta.servlet.http.HttpSession;
 
 //localhost:8080
 @Controller
@@ -16,16 +17,24 @@ public class IndexController {
 	ProdottoService prodottoService;
 	
 	@GetMapping
-	public String getPagina(Model model) {
+	public String getPagina(Model model, HttpSession session) {
+		String utente;
+		if (session.getAttribute("utente") == null) {
+			utente = "no";
+		}
+		else {
+			utente = "si";
+		}
 		List<Prodotto> novita = prodottoService.getMerchandisingPerData();
 		List<Prodotto> film = prodottoService.getProdottiPerTipologia("Film");
+		model.addAttribute("utente", utente);
 		model.addAttribute("novita", novita.subList(0, 6));
 		model.addAttribute("film", film.subList(0, 3));
 		return "index";
 	}
+	@GetMapping("/logout")
+	public String getLogout(HttpSession session) {
+		session.removeAttribute("utente");
+		return "redirect:/";
+	}
 }
-/* @GetMapping("/logout")
-public String getLogout(HttpSession session) {
-	session.removeAttribute("utente");
-	return "redirect:/";
-} */
