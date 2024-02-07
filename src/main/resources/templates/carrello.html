@@ -6,7 +6,7 @@
 		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 	</head>
 	<body>
-		<h4 style="text-align: center;">Il tuo carrello</h4>
+		<h1 style="text-align: center;">Il tuo carrello</h1>
 	<div class="container">
 		<div class="row">
 			<div class="col-8">
@@ -33,8 +33,8 @@
 				<p th:text="'Email: ' + ${utente.email}"></p>
 				<p th:text="'Numero di telefono: ' + ${utente.numeroDiTelefono}"></p>
 				<a th:href="@{/carrello/aggiungi}" class="btn btn-primary">Paga con Paypal</a>
-				<h2 th:if="${stop!=null}">Il carrello è vuoto, non puoi procedere all'ordine!</h2>
-				<h2 th:if="${success!=null}">Pagamento effettuato: ordine registrato con successo!</h2>
+				<h4 th:if="${stop!=null}">Il carrello è vuoto, non puoi procedere all'ordine!</h4>
+				<h4 th:if="${success!=null}">Pagamento effettuato: ordine registrato con successo!</h4>
 			</div>
 		</div>
 	</div>
