@@ -33,6 +33,8 @@
 				<p th:text="'Email: ' + ${utente.email}"></p>
 				<p th:text="'Numero di telefono: ' + ${utente.numeroDiTelefono}"></p>
 				<a th:href="@{/carrello/aggiungi}" class="btn btn-primary">Paga con Paypal</a>
+				<h2 th:if="${stop!=null}">Il carrello è vuoto, non puoi procedere all'ordine!</h2>
+				<h2 th:if="${success!=null}">Pagamento effettuato: ordine registrato con successo!</h2>
 			</div>
 		</div>
 	</div>
