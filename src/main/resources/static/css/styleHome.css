@@ -143,6 +143,12 @@ a.text-lightreg {
         }
 /* fine solo registrazione*/
 
+  /* solo login */
+        .loginbg-img {
+            width: 100;
+            height: 750px;
+        }
+/* fine login */
 
 /* Solo Pagina Catalogo */
 
