@@ -65,14 +65,14 @@ public class CatalogoController {
 		return "catalogo";
 	}
 	
-	//localhost:8080/catalogo/aggiungi
+	//localhost:8080/catalogo/aggiungi?id=1&tipologia=Merchandainsing
 	@GetMapping ("/aggiungi")
-	public String gestioneAggiunta(@RequestParam("id")int id, HttpSession session) {
+	public String gestioneAggiunta(@RequestParam("id")int id, HttpSession session, @RequestParam("tipologia") String tipologia) {
 		
 		if (session.getAttribute("utente")== null)
 			 return "redirect:/login"; 
 		
 		prodottoService.aggiungiACarrello(session, id); 
-		return "redirect:/"; 
+		return "redirect:/catalogo?tipologia=" + tipologia; 
 	}
 }
