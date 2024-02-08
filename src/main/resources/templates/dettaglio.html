@@ -107,7 +107,7 @@
                 <div class="col-md-10">
                     <div class="product-box">
                         <!-- Immagine piccola a sinistra -->
-                        <div class="small-image">
+                        <div th:if="${prodotto.immagineDue} != null" class="small-image">
                             <img th:src="${prodotto.immagineDue}" alt="Immagine Prodotto" class="img-fluid mb-3">
                         </div>  
                         <!-- Immagine grande del prodotto -->                
@@ -125,7 +125,7 @@
                             </div>
                             <div class="specifica"><p class="tipo-specifica">Prezzo</p><p th:text="'€' + ${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}" class="categoria-dettaglio"></p></div>
                             <!-- Aggiungere link per il carrello -->                
-                            <a><button class="btn btn-primary">Aggiungi al carrello</button></a>
+                            <a th:href="@{dettaglio/aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}"><button class="btn btn-primary">Aggiungi al carrello</button></a>
                         </div>                        
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                                     </div>
                                     <div class="btn-group" role="group" aria-label="Pulsanti">
                                     	<!-- Aggiungere link per il carrello -->
-                                        <a class="btn btn-primary">Aggiungi al carrello</a>
+                                        <a th:href="@{dettaglio/aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Aggiungi al carrello</a>
                                     </div>
                                 </div>
                             </div>
@@ -203,7 +203,7 @@
                     </div>
                     <br>
                      <div style="margin-top: -8px;">
-                        <a href="#" class="text-light" style="text-decoration: none;">
+                        <a th:href="@{/privacy}" class="text-light" style="text-decoration: none;">
                             <i class="bi bi-lock"> Privacy Policy</i>
                         </a>
                     </div>

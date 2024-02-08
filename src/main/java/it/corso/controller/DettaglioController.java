@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.corso.model.Prodotto;
 import it.corso.service.ProdottoService;
+import jakarta.servlet.http.HttpSession;
 
 //localhost:8080/catalogo
 @Controller
@@ -20,8 +21,17 @@ public class DettaglioController {
 	public String getPagina (
 	@RequestParam("id") String idProdotto,
 	@RequestParam("tipologia")String tipologia,
-	Model model) {
+	Model model,
+	HttpSession session) {
 		model.addAttribute("tipologia", tipologia);
+		String utente;
+		if (session.getAttribute("utente") == null) {
+			utente = "no";
+		}
+		else {
+			utente = "si";
+		}
+		model.addAttribute("utente", utente);
 		try {
 			int id = Integer.parseInt(idProdotto);
 			Prodotto prodotto = prodottoService.getProdottoFilmPerIdETipologia(id, tipologia);
@@ -45,5 +55,15 @@ public class DettaglioController {
 		
 		return "dettaglio";
 	}
+	//localhost:8080/dettaglio/aggiungi?id=1&tipologia=Merchandainsing
+	@GetMapping ("/aggiungi")
+	public String gestioneAggiunta(@RequestParam("id")int id, HttpSession session, @RequestParam("tipologia") String tipologia) {
+		
+		if (session.getAttribute("utente")== null)
+			 return "redirect:/login"; 
+		
+		prodottoService.aggiungiACarrello(session, id); 
+		return "redirect:/dettaglio?id=" + id + "&tipologia=" + tipologia; 
+	}	
 	
 }
