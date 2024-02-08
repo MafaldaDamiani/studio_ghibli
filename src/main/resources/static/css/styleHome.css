@@ -9,7 +9,6 @@ h5, a, p, label, h6 {
     font-family: 'Macondo', cursive;
     font-size: x-large;
 }
-
 /* Inizio Nav */
 .navbar-collapse {
     background-color: black;
@@ -59,13 +58,11 @@ h5, a, p, label, h6 {
     color: white; 
 }
 /* Fine nav */
-
 /* Inizio Footer */
 .containerhedfot {
     background-color: black;
 }
 /* Fine Footer */ 
-
 /* Inizio Button */
 .btn{
     background-color: #fd9c6b;
@@ -78,7 +75,6 @@ h5, a, p, label, h6 {
     border-color:#fd9c6b;
 }
 /* Fine Button */
-
 /* Inizio a */
 a.text-light:hover {
     color: #fd9c6b !important;
@@ -90,6 +86,7 @@ a.text-lightreg {
     color: #fd9c6b !important;
 }
 /* Fine a */
+/* Fine solo parti in comune */
 
 
 /* Solo Home Page */
@@ -141,7 +138,7 @@ a.text-lightreg {
 .errore{
 	font-size: 15px; 
 }
-/* fine solo registrazione*/
+/* Fine solo registrazione*/
 
 
 /* Solo login */
@@ -149,7 +146,7 @@ a.text-lightreg {
     width: 100;
     height: 750px;
 }
-/* Fine login */
+/* Fine solo login */
 
 
 /* Solo Pagina Catalogo */
