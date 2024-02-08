@@ -117,6 +117,7 @@
                         <!-- Descrizione del prodotto -->
                         <div class="product-description">
                             <h2 th:text="${prodotto.nome}" class="nome-dettaglio"></h2>
+                            <div class="specifica"><p class="tipo-specifica">Categoria: </p><p th:text="${prodotto.categoria}" class="categoria-dettaglio"></p></div>
                             <div class="specifica"><p class="tipo-specifica">Quantità disponibile: </p><p th:text="${prodotto.quantitaDisponibile}" class="categoria-dettaglio"></p></div>
                             <div class="descrizione-dettaglio">
                                 <p class="tipo-specifica">Descrizione: </p>
