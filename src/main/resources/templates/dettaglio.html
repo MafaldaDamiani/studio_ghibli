@@ -117,6 +117,7 @@
                         <!-- Descrizione del prodotto -->
                         <div class="product-description">
                             <h2 th:text="${prodotto.nome}" class="nome-dettaglio"></h2>
+                            <div class="specifica"><p class="tipo-specifica">Categoria: </p><p th:text="${prodotto.categoria}" class="categoria-dettaglio"></p></div>
                             <div class="specifica"><p class="tipo-specifica">Quantità disponibile: </p><p th:text="${prodotto.quantitaDisponibile}" class="categoria-dettaglio"></p></div>
                             <div class="descrizione-dettaglio">
                                 <p class="tipo-specifica">Descrizione: </p>
@@ -135,7 +136,7 @@
         <!-- prodotti correlati -->
         <div class="latest" style="margin-top: 70px; margin-bottom: 20px;">
             <div class="container">
-                <h2 class="mb-3 mt-6" style="margin-left: 10px;">Prodotti correlati</h2>
+                <h2 class="mb-5 mt-6 text-center">Prodotti correlati</h2>
                 <div class="row justify-content-center">
                     <!-- card -->
                     <div th:each="prodotto : ${catalogo}" class="col-3 col-md-3">
