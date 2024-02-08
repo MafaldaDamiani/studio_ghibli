@@ -1,4 +1,5 @@
 package it.corso.controller;
+import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,13 +29,14 @@ public class DettaglioController {
 			List<Prodotto> collegati = prodottoService.getProdottiPerFilm(prodotto.getFilm().getId());
 			List<Prodotto> collegatiDue = prodottoService.getProdottiPerCategoria(prodotto.getCategoria());
 			collegati.addAll(collegatiDue);
-			Prodotto elementoCollegato; 
-			for (int i=1; i<collegati.size(); i++) {
-				elementoCollegato = collegati.get(i);
-				if(elementoCollegato.getId() == prodotto.getId()) {
-					collegati.remove(elementoCollegato);
-					i--;
-				}
+			
+			// Utilizzando Iterator e il metodo remove dell'iterator, si evitano problemi di concorrenza durante la rimozione degli elementi dalla lista mentre si sta iterando su di essa.
+			Iterator<Prodotto> iterator = collegati.iterator();
+			while (iterator.hasNext()) {
+			    Prodotto elementoCollegato = iterator.next();
+			    if (elementoCollegato.getId() == prodotto.getId()) {
+			        iterator.remove(); // Rimuovi l'elemento utilizzando il metodo remove dell'iterator
+			    }
 			}
 			model.addAttribute ("catalogo", collegati.subList(0, Math.min(4, collegati.size()-1)));
 		} catch (Exception e) {
