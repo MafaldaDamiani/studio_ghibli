@@ -73,7 +73,6 @@ public class CatalogoController {
 		model.addAttribute("catalogo", catalogo);
 		return "catalogo";
 	}
-	
 	//localhost:8080/catalogo/aggiungi?id=1&tipologia=Merchandainsing
 	@GetMapping ("/aggiungi")
 	public String gestioneAggiunta(@RequestParam("id")int id, HttpSession session, @RequestParam("tipologia") String tipologia) {

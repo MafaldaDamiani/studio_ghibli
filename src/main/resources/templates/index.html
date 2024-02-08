@@ -38,6 +38,10 @@
                         <li class="nav-item">
                             <a th:href="@{/catalogo(tipologia='Merchandising')}" class="nav-link" href="">Merchandising</a>
                         </li>
+                        <!-- Link a Carrello -->
+                        <li th:if="${utente}=='si'" class="nav-item">
+                            <a th:href="@{/carrello}" class="nav-link" href="">Carrello</a>
+                        </li>                        
                         <!-- Link a Logout -->
                         <li th:if="${utente}=='si'" class="nav-item">
                             <a th:href="@{/logout}" class="nav-link" href="">Esci</a>
@@ -129,7 +133,7 @@
                                         <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-info">Dettaglio Prodotto</a>
                                     </div>
                                     <div class="btn-group" role="group" aria-label="Pulsanti">
-                                        <a th:href="@{catalogo/aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Aggiungi al carrello</a>
+                                        <a th:href="@{aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Aggiungi al carrello</a>
                                     </div>
                                 </div>
                             </div>
@@ -189,10 +193,10 @@
                                 <div class="d-flex row">
                                     <div class="btn-group mb-2" role="group" aria-label="Pulsanti">
                                         <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Dettaglio Prodotto</a>
-                                    </div>                                
-                                    <div class="btn-group" role="group" aria-label="Pulsanti">
-                                        <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Dettaglio Prodotto</a>
                                     </div>
+                                    <div class="btn-group" role="group" aria-label="Pulsanti">
+                                        <a th:href="@{aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Aggiungi al carrello</a>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
