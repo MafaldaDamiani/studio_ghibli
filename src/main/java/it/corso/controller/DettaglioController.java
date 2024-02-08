@@ -32,6 +32,9 @@ public class DettaglioController {
 			utente = "si";
 		}
 		model.addAttribute("utente", utente);
+		// Salvo idProdotto e tipologia all'interno di una session, per poterlo poi utilizzare nel metodo aggiungiCarrello.
+		session.setAttribute("idProdotto", idProdotto);
+		session.setAttribute("tipologiaProdotto", tipologia);
 		try {
 			int id = Integer.parseInt(idProdotto);
 			Prodotto prodotto = prodottoService.getProdottoFilmPerIdETipologia(id, tipologia);
@@ -55,15 +58,16 @@ public class DettaglioController {
 		
 		return "dettaglio";
 	}
-	//localhost:8080/dettaglio/aggiungi?id=1&tipologia=Merchandainsing
+	//localhost:8080/dettaglio/aggiungi?id=1
 	@GetMapping ("/aggiungi")
-	public String gestioneAggiunta(@RequestParam("id")int id, HttpSession session, @RequestParam("tipologia") String tipologia) {
+	public String gestioneAggiunta(@RequestParam("id")int id, HttpSession session) {
 		
 		if (session.getAttribute("utente")== null)
 			 return "redirect:/login"; 
-		
-		prodottoService.aggiungiACarrello(session, id); 
-		return "redirect:/dettaglio?id=" + id + "&tipologia=" + tipologia; 
+		prodottoService.aggiungiACarrello(session, id);
+		// Recupero idProdotto e tipologiaProdotto dalla sessione, potrò finalmente utilizzare queste String per ritornare alla pagina che stavo visualizzando.
+		String idProdotto = (String)session.getAttribute("idProdotto");
+		String tipologiaProdotto = (String)session.getAttribute("tipologiaProdotto");
+		return "redirect:/dettaglio?id=" + idProdotto + "&tipologia=" + tipologiaProdotto; 
 	}	
-	
 }
