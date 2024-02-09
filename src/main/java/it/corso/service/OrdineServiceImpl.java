@@ -1,7 +1,10 @@
 package it.corso.service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.corso.dao.OrdineDao;
@@ -67,6 +70,11 @@ public class OrdineServiceImpl implements OrdineService {
 				ordiniUtente.add(ordine);
 			}
 		}
+		Comparator<Ordine> byDate = Comparator.comparing(Ordine::getDataOra).reversed();
+		ordiniUtente = ordiniUtente
+				.stream()
+				.sorted(byDate)
+				.collect(Collectors.toList());
 		//Restituisco la lista con gli ordini filtrati
 		return ordiniUtente;
 	}
