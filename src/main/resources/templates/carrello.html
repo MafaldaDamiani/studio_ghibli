@@ -108,18 +108,17 @@
 			
         <!-- Box del riepilogo ordini -->
         <div class="col-md-4">
-            <div class="">
+            <div class="riepilogo">
                 <h4 class="text-uppercase font-weight-bold">Riepilogo dati spedizione</h4>
                 <hr>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                     	<div><p class="fw-bold">Utente:</p><p style="margin-top:-20px" th:text="${utente.nome} + ' ' + ${utente.cognome}"></p></div>
                     	<div><p class="fw-bold">Email:</p><p style="margin-top:-20px" th:text="${utente.email}"></p></div>
                     	<div><p class="fw-bold">Numero di telefono:</p><p style="margin-top:-20px" th:text="${utente.numeroDiTelefono}"></p></div>
                     	<div><p class="fw-bold">Indirizzo:</p><p style="margin-top:-20px" th:text="${utente.indirizzo} + ', ' + ${utente.citta} + ', ' + ${utente.provincia} + ', ' + ${utente.cap}"></p></div>
                     </div>
                 </div>
-                
                 <div class="row">
                     <div class="col-md-6">
                         <p class="fw-bold">Totale Stimato:</p>
