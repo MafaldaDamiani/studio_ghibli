@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.corso.dao.OrdineDao;
+import it.corso.dao.ProdottoDao;
 import it.corso.model.Ordine;
 import it.corso.model.Prodotto;
 import it.corso.model.Utente;
@@ -13,6 +14,8 @@ import jakarta.servlet.http.HttpSession;
 @Service
 public class OrdineServiceImpl implements OrdineService {
 
+	@Autowired
+	public ProdottoDao prodottoDao;
 	
 	@Autowired
 	private OrdineDao ordineDao;
@@ -68,6 +71,26 @@ public class OrdineServiceImpl implements OrdineService {
 		return ordiniUtente;
 	}
 
+	@Override
+	public String diminuisciQuantita(List<Prodotto> carrello) {
+		int contatore=0;
+		String messaggio;
+		for(Prodotto prodotto: carrello) {
+			if(prodotto.getQuantitaDisponibile()>0) {
+				++ contatore;
+			}
+		}
+		if (contatore==carrello.size()) {
+			for(Prodotto prodotto: carrello) {
+				prodotto.setQuantitaDisponibile(prodotto.getQuantitaDisponibile()-1);
+				prodottoDao.save(prodotto);
+			}
+			messaggio="Ottimo";
+		}else {
+			messaggio= "Merda";
+		}
+		return messaggio;
+	}
 
 
 	/*

@@ -133,7 +133,8 @@
                     <a th:href="@{/carrello/aggiungi}" class="btn btn-primary btn-block paypal-button ">
                         Paga con <img src="https://logos-world.net/wp-content/uploads/2020/07/PayPal-Logo.png" alt="Logo PayPal" class="paypal-logo">
                     </a>
-                    <h5 th:if="${stop!=null}" style="margin-top: 20px;">Il carrello è vuoto, non puoi procedere all'ordine!</h5>
+                    <h5 th:if="${stop!=null}" style="margin-top: 20px;">Carrello vuoto, non puoi procedere all'ordine!</h5>
+                    <h5 th:if="${alt!=null}" style="margin-top: 20px;">Prodotto/i non disponibile/i, non puoi procedere all'ordine!</h5>
                     <h5 th:if="${success!=null}" style="margin-top: 20px;">Pagamento effettuato: ordine registrato con successo!</h5>
                 </div>
                 <hr>

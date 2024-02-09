@@ -25,7 +25,7 @@ public class CarrelloController {
 	
 	@SuppressWarnings("unchecked")
 	@GetMapping
-	public String getPage(@RequestParam(name="stop", required=false)String stop,@RequestParam(name="success", required=false)String success, Model model, HttpSession session) {
+	public String getPage(@RequestParam(name="stop", required=false)String stop, @RequestParam(name="alt", required=false) String alt, @RequestParam(name="success", required=false)String success, Model model, HttpSession session) {
 		 if (session.getAttribute("utente")== null)
 			 return "redirect:/login"; 
 		 
@@ -46,6 +46,7 @@ public class CarrelloController {
 		model.addAttribute("totaleStimato", totaleStimato); 
 		model.addAttribute("stop", stop);
 		model.addAttribute("success", success); 
+		model.addAttribute("alt", alt);
 		return "carrello";
 	}
 			
@@ -60,14 +61,17 @@ public class CarrelloController {
 	public String aggiungiOrdine(HttpSession session, Model model) {
 		
 		List<Prodotto> carrello= (List<Prodotto>) session.getAttribute("carrello"); 
+		String messaggio=ordineService.diminuisciQuantita(carrello);
+		model.addAttribute("messaggio", messaggio);
 		
 		if (carrello.isEmpty()) {
 			return "redirect:/carrello?stop";
-		}else {
+		}else if(messaggio.equalsIgnoreCase("Merda")) {
+			return "redirect:/carrello?alt";
+		}
+		else{
 			ordineService.aggiungiOrdine(session);
 			return "redirect:/carrello?success";
 		}
 	}
-			
-
 }

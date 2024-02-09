@@ -3,6 +3,7 @@ package it.corso.service;
 import java.util.List;
 
 import it.corso.model.Ordine;
+import it.corso.model.Prodotto;
 import it.corso.model.Utente;
 import jakarta.servlet.http.HttpSession;
 
@@ -12,5 +13,6 @@ public interface OrdineService {
 	List<Ordine> getOrdini();
 	Ordine getOrdineById(int id);
 	List<Ordine> getOrdiniByUser(Utente utente);
+	String diminuisciQuantita(List<Prodotto> carrello);
 	
 }
