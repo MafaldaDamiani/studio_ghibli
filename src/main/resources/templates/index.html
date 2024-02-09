@@ -131,10 +131,10 @@
 				            <p th:text="'Prezzo: ' + '€' + ${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}" class="card-text"></p>
 				            <div class="d-flex row">
 				                <div class="btn-group mb-2" role="group" aria-label="Pulsanti">
-				                    <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-info">Dettaglio Prodotto</a>
+				                    <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-secondary">Dettaglio Prodotto</a>
 				                </div>
 				                <div class="btn-group" role="group" aria-label="Pulsanti">
-				                    <a th:href="@{aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Aggiungi al carrello</a>
+				                    <a th:href="@{aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-secondary">Aggiungi al carrello</a>
 				                </div>
 				            </div>
 				        </div>
@@ -193,10 +193,10 @@
                                 <p th:text="${prodotto.categoria}" class="card-text text-muted"></p>
                                 <div class="d-flex row">
                                     <div class="btn-group mb-2" role="group" aria-label="Pulsanti">
-                                        <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Dettaglio Prodotto</a>
+                                        <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-secondary">Dettaglio Prodotto</a>
                                     </div>
                                     <div class="btn-group" role="group" aria-label="Pulsanti">
-                                        <a th:href="@{aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-primary">Aggiungi al carrello</a>
+                                        <a th:href="@{aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-secondary">Aggiungi al carrello</a>
                                     </div>                                    
                                 </div>
                             </div>

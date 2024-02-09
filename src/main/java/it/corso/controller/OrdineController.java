@@ -26,6 +26,9 @@ public class OrdineController {
 		if (session.getAttribute("utente")== null)
 			 return "redirect:/login";
 		
+		 String utenteNav = "si";
+		 model.addAttribute("utenteNav", utenteNav);		
+		
 		List<Ordine> ordini = ordineService.getOrdiniByUser((Utente) session.getAttribute("utente"));
 		model.addAttribute("ordine", ordini);
 		return "ordine";
