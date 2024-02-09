@@ -252,4 +252,114 @@ a.text-lightreg {
 	margin-bottom: 10px;
 }
 /* Fine solo Pagina Dettaglio */
+
+
+/* solo carrello inizio*/
+
+.product-box,
+        .shipping-box {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .product-image img {
+            width: 100%;
+        }
+
+        .shipping-box h2 {
+            margin-bottom: 20px;
+        }
+
+        .product-box {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .product-image {
+            width: 70%;
+            margin-bottom: 20px;
+        }
+
+        .product-image img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .product-description {
+            width: 100%;
+        }
+
+        .product-description h2 {
+            font-weight: bold;
+        }
+
+        .quantity-box {
+            margin-top: 20px;
+        }
+
+        .quantity-box input,
+        .quantity-box button {
+            width: 100%;
+            margin-top: 70px;
+        }
+
+        .shipping-box {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+
+        }
+
+        .shipping-details p {
+            margin-bottom: 10px;
+        }
+
+        .shipping-details button {
+            display: block;
+            margin: auto;
+            /* Centrare il pulsante */
+            width: 150px;
+            /* Larghezza desiderata */
+            padding: 10px 20px;
+            /* Padding per renderlo leggermente più grande */
+            font-size: 16px;
+            /* Dimensione del testo */
+        }
+
+        /* Stile per il pulsante PayPal */
+        .paypal-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 150px; 
+        }
+
+        /* Stile per il logo di PayPal all'interno del pulsante */
+        .paypal-logo {
+            width: 43px;
+            /* Imposta la larghezza desiderata */
+            height: auto;
+            /* Mantieni l'aspetto proporzionato */
+            margin-left: 10px;
+            /* Aggiungi margine a destra per separare il logo dal testo */
+        }
+
+        button.paypal-button .paypal-text {
+            margin-right: 10px;
+            /* Modifica il margine destro secondo le tue preferenze */
+        }
+
+        .btn .btn-primary .btn-block .paypal-button {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+   /* fine solo carrello*/
     

@@ -30,14 +30,23 @@ public class CarrelloController {
 		 if (session.getAttribute("utente")== null)
 			 return "redirect:/login"; 
 		 
-		 List<Prodotto> carrello= (List<Prodotto>) session.getAttribute("carrello");
 		 Utente utente= (Utente) session.getAttribute("utente"); 
-			model.addAttribute("carrello", carrello);
-			model.addAttribute("utente", utente); 
+		 List<Prodotto> carrello= (List<Prodotto>) session.getAttribute("carrello");
+		 
+		 Double totaleStimato= 0.0;
+		 
+		 for (Prodotto prodotto : carrello) {
+		        // Somma il prezzo di ciascun prodotto al totale
+		        totaleStimato += prodotto.getPrezzo();
+		    } 
+				 
+		model.addAttribute("carrello", carrello);
+		model.addAttribute("utente", utente); 
+		model.addAttribute("totaleStimato", totaleStimato); 
 			
-			model.addAttribute("stop", stop);
-			model.addAttribute("success", success); 
-			return "carrello";
+		model.addAttribute("stop", stop);
+		model.addAttribute("success", success); 
+		return "carrello";
 
 	}
 			

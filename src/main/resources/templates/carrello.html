@@ -1,13 +1,91 @@
 <!DOCTYPE html>
-	<html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<title>Carrello</title>
-		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-	</head>
-	<body>
-		<h1 style="text-align: center;">Il tuo carrello</h1>
-	<div class="container">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Carrello</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Macondo&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styleHome.css">
+
+</head>
+
+<body>
+<!-- inizio navbar-->
+   <nav class="navbar fixed-top pt-0" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="font-family: 'Playfair Display', serif;" href="#"></a>
+                <button class="navbar-toggler mt-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation" style="border: none;">
+                    <img src="immagini/home/fuligine.png" alt="Menu" style="width: 80px; outline: none;">
+                    <br>
+                    <span style="color: white;">Menu</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-12">
+                        <!-- link a Home -->
+                        <li class="nav-item">
+                            <a th:href="@{/}" class="nav-link active" aria-current="page" href="">Home</a>
+                        </li>
+                        <!-- link a Film -->
+                        <li class="nav-item">
+                            <a th:href="@{/catalogo(tipologia=Film)}" class="nav-link" href="">Film</a>
+                        </li>
+                        <!-- link a Merchandising -->
+                        <li class="nav-item">
+                            <a th:href="@{/catalogo(tipologia='Merchandising')}" class="nav-link" href="">Merchandising</a>
+                        </li>
+                        <!-- Link a Carrello -->
+                        <li th:if="${utente}=='si'" class="nav-item">
+                            <a th:href="@{/carrello}" class="nav-link" href="">Carrello</a>
+                        </li>                        
+                        <!-- Link a Logout -->
+                        <li th:if="${utente}=='si'" class="nav-item">
+                            <a th:href="@{/logout}" class="nav-link" href="">Esci</a>
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline-light btn-close" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Close">
+                    </button>
+                </div>
+            </div>
+        </nav>
+    <!-- navbar -->
+    
+    <!-- Slider Section-->
+    <div class="slider-section">
+        <div class="overlay"></div>
+        <div class="container-xxl-slider"
+            style="background-image: url(immagini/home/6.jpeg); background-repeat: no-repeat; background-size: cover;">
+
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-3 sopra text-center" style="color:#fd9c6b; margin-top: 570px; margin-bottom: 0;">
+                        </h1>
+                    <h1 class="display-4 sopra text-center mt-3" style="color:white;">
+                       </h1>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Slider Section End-->
+
+            <!-- Box del prodotto -->
+           <h1 style="text-align: center; margin: 50px; ">Il tuo carrello</h1>
+<div class="container">
 		<div class="row">
 			<div class="col-8">
 			    <div th:each="prodotto : ${carrello}" class="card mb-3" style="max-width: 540px;">
@@ -19,6 +97,7 @@
 				      <div class="card-body">
 				        <h5 th:text="${prodotto.nome}" class="card-title"></h5>
 				        <p th:text="${prodotto.descrizione}" class="card-text"></p>
+				        <p th:text="${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')} + ' Euro'" class="card-text"></p>
 				        <a th:href="@{carrello/rimuovi(id=${prodotto.id})}" class="btn btn-primary">Rimuovi dal carrello</a>
 				        
 				      </div>
@@ -26,24 +105,109 @@
 				  </div>
 				</div>
 			</div>
-			<div class="col-4">
-				<h2>Riepilogo dati spedizione</h2>
-				<p th:text="'Utente: ' + ${utente.nome} + ' ' + ${utente.cognome}"></p>
-				<p th:text="'Indirizzo: ' + ${utente.indirizzo} + ', ' + ${utente.citta} + ', ' + ${utente.provincia} + ', ' + ${utente.cap}"></p>
-				<p th:text="'Email: ' + ${utente.email}"></p>
-				<p th:text="'Numero di telefono: ' + ${utente.numeroDiTelefono}"></p>
-				<a th:href="@{/carrello/aggiungi}" class="btn btn-primary">Paga con Paypal</a>
-				<h4 th:if="${stop!=null}">Il carrello è vuoto, non puoi procedere all'ordine!</h4>
-				<h4 th:if="${success!=null}">Pagamento effettuato: ordine registrato con successo!</h4>
-			</div>
-		</div>
-	</div>
-	
-		<a th:href="@{/}" class="btn btn-primary">Torna alla Home Page</a>
-		
-		
-		<a th:href="@{/ordine}" class="btn btn-primary">I tuoi ordini</a>
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-	</body>
+			
+        <!-- Box del riepilogo ordini -->
+        <div class="col-md-4">
+            <div class="order-summary">
+                <h4 class="text-uppercase font-weight-bold">Riepilogo dati spedizione</h4>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p th:text="'Utente: ' + ${utente.nome} + ' ' + ${utente.cognome}"></p>
+                        <p th:text="'Email: ' + ${utente.email}"></p>
+                        <p th:text="'Numero di telefono: ' + ${utente.numeroDiTelefono}"></p>
+                        <p th:text="'Indirizzo: ' + ${utente.indirizzo} + ', ' + ${utente.citta} + ', ' + ${utente.provincia} + ', ' + ${utente.cap}"></p>
+                    </div>
+                </div>
+                
+                <div class="row ">
+                    <div class="col-md-6">
+                        <p class="font-weight-bold">Totale Stimato</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p th:text="${#numbers.formatDecimal(totaleStimato,0,'POINT',2,'COMMA')} + ' Euro'" class="font-weight-bold"></p>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <a th:href="@{/carrello/aggiungi}" class="btn btn-primary btn-block paypal-button ">
+                        Paga con <img src="https://logos-world.net/wp-content/uploads/2020/07/PayPal-Logo.png" alt="Logo PayPal" class="paypal-logo">
+                    </a>
+                    <h5 th:if="${stop!=null}" style="margin-top: 20px;">Il carrello è vuoto, non puoi procedere all'ordine!</h5>
+                    <h5 th:if="${success!=null}" style="margin-top: 20px;">Pagamento effettuato: ordine registrato con successo!</h5>
+                </div>
+                <hr>
+            </div>
+        </div>
+  </div>
+
+    <!-- Pulsanti -->
+    <div class="row mt-3 d-flex justify-content-center">
+        <div class="col-auto mx-1 py-2">
+            <a th:href="@{/}" type="button" class="btn btn-secondary btn-block">Ritorna alla Homepage</a>
+        </div>
+        <div class="col-auto mx-1 py-2">
+            <a th:href="@{/ordine}" type="button" class="btn btn-info btn-block">Dettagli ordini</a>
+        </div>
+    </div>
+</div>
+        
+         <!-- footer -->
+        <div class="container-xxxl  containerhedfot" id="hedfot">
+            <div class="row justify-content-center">
+                <div class="col-10 col-md-2 mt-5">
+                    <h4 class="text-start text-light">Menu</h4>
+                    <!-- Link alla pagina Home -->
+                    <div class="text-start  mb-2">
+                        <a th:href="@{/}" class="text-light" style="text-decoration: none;"> Home </a>
+                    </div>
+                    <!-- Link alla pagina dei Film -->
+                    <div class="text-start text-light mb-2">
+                        <a th:href="@{/catalogo(tipologia=Film)}" class="text-light" style="text-decoration: none;"> Film </a>
+                    </div>
+                    <!-- Link alla pagina del Merchandising -->
+                    <div class="text-start text-light mb-2 mb-5">
+                        <a th:href="@{/catalogo(tipologia='Merchandising')}" class="text-light" style="text-decoration: none;"> Merchandising </a>
+                    </div>
+                </div>
+                <div class="col-10 col-md-4 mt-5">
+                    <h4 class="text-start text-light">Su di Noi</h4>
+                    <p class="text-light">La passione di Gaspare Pero per Miyazaki, ci ha spinte, contro la nostra volontà ad esplorare il mondo mistico e meravigiouso dello Studio Ghibli. Sappiamo tutti che le tracce le ha imposte lui.</p>
+                </div>
+                <div class="col-10 col-md-2 mt-5">
+                    <h4 class="text-start text-light">Contattaci</h4>
+                    <div class="mb-3 mt-3">
+                        <a href="#" class="text-light" style="text-decoration: none;">
+                            <i class="bi bi-telephone"> 0749875423</i>
+                         </a>   
+                    </div>
+                    <div>
+                        <a href="#" class="text-light" style="text-decoration: none;">
+                            <i class="bi bi-envelope"> ghiblistore@gmail.com</i>
+                        </a>
+                    </div>
+                    <br>
+                    <div style="margin-top: -8px;">
+                        <a th:href="@{/privacy}" class="text-light" style="text-decoration: none;">
+                            <i class="bi bi-lock"> Privacy Policy</i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-10 col-md-2 mt-5">
+                    <img src="immagini/home/logo.png" alt="" style="max-width: 100%; height: auto;" class="img-fluid">
+                </div>
+            </div>
+        </div>                                     
+		<!-- footer -->
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+
+
+</body>
+
 </html>
