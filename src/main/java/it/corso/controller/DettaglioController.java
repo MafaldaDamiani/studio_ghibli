@@ -55,7 +55,7 @@ public class DettaglioController {
 		} catch (Exception e) {
 			return "redirect:/catalogo?tipologia=" + tipologia;
 		}
-		
+		model.addAttribute("tipologia", tipologia);
 		return "dettaglio";
 	}
 	//localhost:8080/dettaglio/aggiungi?id=1
