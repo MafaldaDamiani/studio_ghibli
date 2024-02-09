@@ -53,10 +53,9 @@ h5, a, p, label, h6 {
     border: none; 
     background-color: transparent;      
 }  
-.btn-close i {
-    font-size: 10px; 
-    color: white; 
-}
+.btn-close .bi-x {
+    font-size: 10px;
+    color: white};e
 /* Fine nav */
 /* Inizio Footer */
 .containerhedfot {
@@ -377,30 +376,5 @@ a.text-lightreg {
             display: block;
         }
 
-        .navbar-toggler-close {
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin-top: 8px;
-            margin-right: 16px;
-        }
-
-        .navbar-toggler-close button {
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
-        }
-
-        .btn-close {
-            padding-top: 0;
-        }
-
-        .btn-close::after {
-            content: "×";
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
         
         /* fine gestione ordini*/
