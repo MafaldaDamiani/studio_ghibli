@@ -26,10 +26,12 @@ public class CarrelloController {
 	@SuppressWarnings("unchecked")
 	@GetMapping
 	public String getPage(@RequestParam(name="stop", required=false)String stop,@RequestParam(name="success", required=false)String success, Model model, HttpSession session) {
-		
 		 if (session.getAttribute("utente")== null)
 			 return "redirect:/login"; 
 		 
+		 String utenteNav = "si";
+		 model.addAttribute("utenteNav", utenteNav);
+
 		 Utente utente= (Utente) session.getAttribute("utente"); 
 		 List<Prodotto> carrello= (List<Prodotto>) session.getAttribute("carrello");
 		 
@@ -38,19 +40,15 @@ public class CarrelloController {
 		 for (Prodotto prodotto : carrello) {
 		        // Somma il prezzo di ciascun prodotto al totale
 		        totaleStimato += prodotto.getPrezzo();
-		    } 
-				 
+		}  
 		model.addAttribute("carrello", carrello);
 		model.addAttribute("utente", utente); 
 		model.addAttribute("totaleStimato", totaleStimato); 
-			
 		model.addAttribute("stop", stop);
 		model.addAttribute("success", success); 
 		return "carrello";
-
 	}
 			
-	
 	@GetMapping ("/rimuovi")
 	public String gestisciRimozione(@RequestParam("id")int idArticolo, HttpSession session) {
 		prodottoService.rimuoviDaCarrello(session, idArticolo);
