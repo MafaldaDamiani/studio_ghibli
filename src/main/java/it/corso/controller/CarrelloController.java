@@ -36,17 +36,18 @@ public class CarrelloController {
 		 List<Prodotto> carrello= (List<Prodotto>) session.getAttribute("carrello");
 		 
 		 Double totaleStimato= 0.0;
-		 
-		 for (Prodotto prodotto : carrello) {
-		        // Somma il prezzo di ciascun prodotto al totale
-		        totaleStimato += prodotto.getPrezzo();
-		}  
+		 if (carrello != null) {
+			 for (Prodotto prodotto : carrello) {
+			        // Somma il prezzo di ciascun prodotto al totale
+			        totaleStimato += prodotto.getPrezzo();
+			} 
+		} 
 		model.addAttribute("carrello", carrello);
 		model.addAttribute("utente", utente); 
 		model.addAttribute("totaleStimato", totaleStimato); 
 		model.addAttribute("stop", stop);
-		model.addAttribute("success", success); 
 		model.addAttribute("alt", alt);
+		model.addAttribute("success", success); 
 		return "carrello";
 	}
 			
@@ -60,11 +61,14 @@ public class CarrelloController {
 	@GetMapping("/aggiungi")
 	public String aggiungiOrdine(HttpSession session, Model model) {
 		
-		List<Prodotto> carrello= (List<Prodotto>) session.getAttribute("carrello"); 
-		String messaggio=ordineService.diminuisciQuantita(carrello);
-		model.addAttribute("messaggio", messaggio);
+		List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
 		
-		if (carrello.isEmpty()) {
+		String messaggio = null;
+		if (carrello != null) {
+			messaggio = ordineService.diminuisciQuantita(carrello);
+		}
+		
+		if (carrello == null || carrello.isEmpty()) {
 			return "redirect:/carrello?stop";
 		}else if(messaggio.equalsIgnoreCase("Merda")) {
 			return "redirect:/carrello?alt";

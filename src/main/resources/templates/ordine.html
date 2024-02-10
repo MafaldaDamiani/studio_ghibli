@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Macondo&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="css/styleHome.css">
+    <link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		 <nav class="navbar fixed-top pt-0" data-bs-theme="dark">
@@ -104,7 +104,7 @@
 						<td> 
 							<div class="dropdown d-flex justify-content-center"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Dettagli </button> 
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> 
-									<li th:each="prodotto : ${o.prodotti}"><a class="dropdown-item" th:text="${prodotto.nome} + ', ' + ${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')} + ' Euro'"></a></li> 
+									<li th:each="prodotto : ${o.prodotti}"><a class="dropdown-item" th:text="${prodotto.nome} + ' | ' + ${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')} + ' Euro'"></a></li> 
 								</ul> 
 							</div> 
 						</td>
@@ -114,8 +114,8 @@
 			
 						
 	 <!-- Tasto Torna Indietro -->
-    <div class="container mb-3" style="margin-left: 30px">
-        <a th:href="@{/}" class="btn btn-secondary" style="margin: 30px;">Torna Indietro</a>
+    <div class="container mb-4" style="margin-left: 30px">
+        <a th:href="@{/}" class="btn btn-secondary" style="margin: 30px;">Ritorna alla Homepage</a>
     </div>
     
      <!-- footer -->

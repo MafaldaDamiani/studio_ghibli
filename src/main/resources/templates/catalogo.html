@@ -9,7 +9,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Macondo&display=swap" rel="stylesheet">
         <link href="assets/CSS/font-awesome.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/styleHome.css">
+        <link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 	
@@ -227,10 +227,10 @@
                                 <p th:text="'Prezzo: ' + '€' + ${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}" class="card-text"></p>
                                 <div class="d-flex row">
                                     <div class="btn-group mb-2" role="group" aria-label="Pulsanti">
-                                        <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-secondary">Dettaglio Prodotto</a>
+                                        <a th:href="@{/dettaglio(id = ${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-secondary h-auto">Dettaglio Prodotto</a>
                                     </div>
                                     <div class="btn-group" role="group" aria-label="Pulsanti">
-                                        <a th:href="@{catalogo/aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-secondary">Aggiungi al carrello</a>
+                                        <a th:href="@{catalogo/aggiungi(id=${prodotto.id},tipologia = ${prodotto.tipologiaProdotto})}" class="btn btn-secondary h-auto">Aggiungi al carrello</a>
                                     </div>
                                 </div>
                             </div>
