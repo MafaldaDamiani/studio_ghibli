@@ -10,7 +10,7 @@ public interface UtenteService {
 	void registraUtente(Utente utente); 
 	Utente getUtenteById(int id); 
 	List<Utente> getUtenti(); 
-	void cancellaUtente(Utente utente); 
+	void cancellaUtente(Utente utente);
 	
 	boolean controlloLogin(String username, String password, HttpSession session); 
 

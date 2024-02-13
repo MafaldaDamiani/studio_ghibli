@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 @Entity
@@ -30,6 +31,7 @@ public class Utente {
 	private String cognome;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull(message = "Inserire una data valida")
 	@Column(name="dataDiNascita")
 	private LocalDate dataDiNascita;
 	
